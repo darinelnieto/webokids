@@ -2752,6 +2752,7 @@ html, body {
 @media (max-width: 768px) {
   .single-product-template-134541 .content-product-sticky .woocommerce-variation-add-to-cart {
     flex-direction: column;
+    align-items: baseline;
   }
 }
 .single-product-template-134541 .content-product-sticky .shipping-details {
