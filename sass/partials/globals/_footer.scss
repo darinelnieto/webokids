@@ -1,0 +1,296 @@
+.footer-partial-baccbf {
+    .footer-content{
+        background: $red;
+        padding: 6rem 0 3rem 0;
+        .top-content{
+            .form-contain{
+                h2{
+                    font-family: $arista;
+                    color: $marron;
+                    font-size: 40px;
+                    line-height: 1;                
+                }
+                .the-form{
+                    position: relative;
+                    .wpcf7-not-valid-tip{
+                        background: $white;
+                        font-size: 16px;
+                        padding: 5px 10px;
+                    }
+                    .wpcf7-response-output{
+                        background: #ffffff;
+                        color: $marron;
+                        font-size: 16px;
+                        font-weight: 300;
+                        padding: 1rem;
+                        border-color: #ffffff;
+                    }
+                    .input-and-button{
+                        position: relative;
+                        display: flex;
+                        max-width: 360px;
+                        br{
+                            display: none;
+                        }
+                        input[type="email"]{
+                            background: transparent;
+                            color: $marron;
+                            border: 1px solid $marron;
+                            height: 40px;
+                            border-radius: 30px;
+                            padding: 0 1rem;
+                            outline: none;
+                            max-width: 300px;
+                            &::placeholder{
+                                color: $marron;
+                                opacity: .5;
+                            }
+                        }
+                        .wpcf7-spinner{
+                            position: absolute;
+                            top: 150%;
+                            left: 50%;
+                            transform: translateX(-50%);
+                        }
+                        .button{
+                            position: absolute;
+                            top: -1px;
+                            right: 0;
+                            display: flex;
+                            outline: none;
+                            border: none;
+                            background: transparent;
+                            padding: 0 !important;
+                            .text-button{
+                                background: $marron;
+                                padding: 9px 1.6rem 10px 1.6rem;
+                                border-radius: 20px;
+                                color: $red;
+                                font-weight: 400;
+                                margin-right: .5rem;
+                                height: 40px;
+                                position: relative;
+                                font-size: 1rem;
+                                line-height: 1.3;
+                                &::before{
+                                    content: '';
+                                    display: block;
+                                    width: 20px;
+                                    height: 15px;
+                                    position: absolute;
+                                    right: -12%;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    z-index: 1;
+                                    background: $marron;
+                                }
+                            }
+                            .icon-suscribe{
+                                position: relative;
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 50%;
+                                background: $marron;
+                                &::after{
+                                    content: '';
+                                    width: 12px;
+                                    height: 12px;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    background: $red;
+                                    left: -35%;
+                                    transform: translateX(35%);
+                                    top: 9.9%;
+                                    z-index: 100;
+                                }
+                                &::before{
+                                    content: '';
+                                    width: 12px;
+                                    height: 12px;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    background: $red;
+                                    left: -35%;
+                                    transform: translateX(35%);
+                                    top: 59.9%;
+                                    z-index: 100;
+                                }
+                                svg{
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 14px;
+                                    height: auto;
+                                    color: $red;
+                                }
+                            }
+                            &:hover{
+                                .text-button{
+                                    background: #ffffff;
+                                    color: $red;
+                                    &::before{
+                                        background: #ffffff;
+                                    }
+                                }
+                                .icon-suscribe{
+                                    background: #ffffff;
+                                    svg{
+                                       color: $red;
+                                    }
+                                }
+                            }
+                        }
+                        @media(max-width:768px){
+                            flex-direction: column;
+                            max-width: 100%;
+                            p{
+                                margin-bottom: 0;
+                                input[type="email"]{
+                                    max-width: 100%;
+                                    width: 100%;
+                                }
+                                .button{
+                                    position: relative;
+                                    top: 0;
+                                    margin: 1rem auto 1rem 0;
+                                    padding: 0 !important;
+                                }
+                            }
+                        }
+                    }
+                    .policies-container{
+                        label{
+                            cursor: pointer;
+                            display: flex;
+                            br, .wpcf7-form-control-wrap{
+                                display: none;
+                            }
+                            .checkbox{
+                                width: 14px;
+                                height: 14px;
+                                border: 1px solid $marron;
+                                border-radius: 4px;
+                                position: relative;
+                                &::before{
+                                    content: '';
+                                    width: 10px;
+                                    height: 4px;
+                                    border-left: 2px solid $marron;
+                                    border-bottom: 2px solid $marron;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%) rotate(-45deg);
+                                    visibility: hidden;
+                                    transition: .2s;
+                                    display: none;
+                                }
+                            }
+                            .checkbox.active{
+                                &::before{
+                                    visibility: visible;
+                                    display: block;
+                                }
+                            }
+                            .text{
+                                padding-left: 10px;
+                                color: $marron;
+                                width: 80%;
+                                font-size: 12px;
+                                font-weight: 300;
+                                a{
+                                    color: $marron;
+                                }
+                                @media(max-width:1150px){
+                                    width: 90%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        h4{
+            color: $beige_dark;
+            font-weight: 500;
+            font-size: 22px;
+            margin-bottom: 14px;
+            @media(max-width:510px){
+                font-size: 16px;
+            }
+        }
+        .menu{
+            ul{
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                li{
+                    a{
+                        color: $beige_dark;
+                        font-weight: 300;
+                        font-size: 20px;
+                        text-decoration: none;
+                        @media(max-width:510px){
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .copi-right-content{
+        position: relative;
+        padding-top: 1.5rem;
+        margin-top: 1.5rem;
+        &::before{
+            content: '';
+            background: $marron;
+            width: calc(100% + 60px);
+            height: 2px;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            @media(max-width:768px){
+                width: 100%;
+            }
+        }
+        .copy-right{
+            font-size: 16px;
+            font-weight: 300;
+            color: $marron;
+            @media(max-width:768px){
+                text-align: center;
+            }
+        }
+        .favicon-content{
+            text-align: center;
+            img{
+                max-width: 40px;
+                height: auto;
+            }
+        }
+        .instagram-content{
+            a{
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: $marron;
+                svg{
+                    font-size: 2rem;
+                }
+                span{
+                    font-size: 22px;
+                }
+            }
+            @media(max-width:768px){
+                display: none;
+            }
+        }
+    }
+}

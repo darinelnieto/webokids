@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@font-face {
+    font-family: 'Arista 2.0';
+    src: url('../fonts/Arista20.woff2') format('woff2'),
+        url('../fonts/Arista20.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+/*====================== Variables ========================*/
+$roboto: "Roboto", sans-serif;
+$arista: 'Arista 2.0';
+$beige: #F1E9E5;
+$beige_light: #F9F6F5;
+$beige_dark: #e9dbd4;
+$marron: #D9C2B6;
+$red: #FF4438;
+$black: #000000;
+$white: #ffffff;
+$gray: #666666;
+/*============== Font size ===============*/
+$h1: calc(1rem + 3.6vw);
+$p: calc(0.4rem + 1vw);
+$p_movil: calc(.7rem + 1vw);
+
+*{
+    font-family: $roboto;
+}
+p{
+    font-size: $p;
+    line-height: 1.3;
+    font-weight: 400;
+    @media(max-width:500px){
+        font-size: $p_movil;
+    }
+}
+.container{
+    width: 100%;
+    max-width: 1300px !important;
+}
+html, body{
+    width: 100%;
+    overflow-x: hidden;
+}
+.wcspc-count{
+    display: none !important;
+}
+/*================ Products style =================*/
+.woocommerce{
+    .product-card{
+        text-decoration: none;
+        .image-contain{
+            position: relative;
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: auto;
+            }
+            .price{
+                position: absolute;
+                bottom: 0;
+                left: 3%;
+                transform: translateX(-3%);
+                padding: 5px 10px;
+                background: $white;
+                color: $black;
+                font-weight: 600;
+                font-size: 18px;
+                display: flex;
+                gap: 5px;
+            }
+        }
+        .text-contain{
+            padding: 5px 18px;
+            h2{
+                color: $black;
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 0;
+            }
+            p{
+                color: $gray;
+                font-size: 18px;
+                font-weight: 400;
+            }
+        }
+    }
+}
+/*============ Car pop up ============*/
+.wcspc-area{
+    background: $white !important;
+    &::after{
+        display: none;
+    }
+    .wcspc-area-top{
+        .wcspc-item{
+            padding: 0 15px !important;
+        }
+    }
+    .wcspc-action{
+        .wcspc-action-inner{
+            flex-direction: column;
+            gap: 7px;
+            display: flex !important;
+            div{
+                width: 100% !important;
+                a{
+                    border-color: $black !important;
+                    background: $black !important;
+                    font-family: $roboto !important;
+                    font-weight: 500 !important;
+                    border-radius: 20px !important;
+                    &:hover{
+                        background: $white !important;
+                        color: $black !important;
+                    }
+                }
+            }
+            .wcspc-action-right{
+                padding: 0 !important;
+            }
+        }
+    }
+}

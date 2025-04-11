@@ -1,0 +1,33 @@
+.about-us-partial-f404e5 {
+    background: $white;
+    padding: 90px 0;
+    h1{
+        font-weight: 700;
+        font-size: $h1;
+        line-height: .9;
+        color: $black;
+        margin-bottom: 1.6rem;
+    }
+    p{
+        color: $black;
+        margin-bottom: 1.3rem;
+    }
+    a{
+        background: $black;
+        text-decoration: none;
+        padding: 7px 1.3rem;
+        color: $marron;
+        border-radius: 25px;
+        font-size: $p;
+        font-weight: 400;
+        border: 1px solid $black;
+        transition: .2s;
+        @media(max-width:500px){
+            font-size: $p_movil;
+        }
+        &:hover{
+            background: $white;
+            color: $black;
+        }
+    }
+}

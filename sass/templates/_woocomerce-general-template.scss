@@ -1,0 +1,60 @@
+#woocomerce-general-template-347c6d {
+    background: $white;
+    padding: 3rem 0;
+    .wp-block-woocommerce-cart-items-block{
+        table{
+            thead{
+                tr{
+                    th{
+                        font-weight: 700;
+                        font-size: calc(.7rem + .7vw);
+                        color: $black;
+                    }
+                }
+            }
+            tbody{
+                tr{
+                    .wc-block-cart-item__product{
+                        .wc-block-components-product-name{
+                            color: $black;
+                            font-size: calc(.6rem + .7vw);
+                            font-weight: 600;
+                            text-decoration: none;
+                            @media(max-width:768px){
+                                font-size: calc(.9rem + .7vw);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .wp-block-woocommerce-cart-totals-block{
+        h2{
+            font-weight: 700;
+            font-size: calc(.8rem + .7vw);
+            color: $black;
+        }
+        .wc-block-components-button {
+            background: $black;
+            color: $white;
+            border-radius: 25px;
+            padding: 3px 1rem;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid $black;
+            font-weight: 700;
+            font-size: calc(.9rem + .7vw);
+            min-height: auto;
+            outline: none;
+            box-shadow: none !important;
+            transition: .2s;
+            &:hover{
+                background: $white;
+                color: $black;
+            }
+        }
+    }
+}

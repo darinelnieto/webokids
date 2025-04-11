@@ -1,0 +1,124 @@
+#archive-product-template-7680ef {
+    #poduct-list{
+        .woocommerce{
+            p{
+                a{
+                    color: $black;
+                    text-decoration: none;
+                    font-weight: 600;
+                    font-size: $p;
+                    @media(max-width: 768px){
+                        font-size: calc(.9rem + .7vw);
+                    }
+                }
+            }
+            .woocommerce-cart-form{
+                table{
+                    thead{
+                        tr{
+                            th{
+                                font-weight: 700;
+                                font-size: calc(.7rem + .7vw);
+                                color: $black;
+                                @media(max-width:768px){
+                                    font-size: $p_movil;
+                                }
+                            }
+                        }
+                    }
+                    tbody{
+                        tr{
+                            td{
+                               
+                                a{
+                                    text-decoration: none;
+                                    color: $black;
+                                    font-weight: 500;
+                                    img{
+                                        width: 100%;
+                                    }
+                                }
+                                p{
+                                    font-weight: 700;
+                                    font-size: calc(.7rem + .7vw);
+                                    color: $black;
+                                    @media(max-width:768px){
+                                        font-size: $p_movil;
+                                    }
+                                }
+                                .add_to_cart_button{
+                                    background: $black;
+                                    color: $white;
+                                    border-radius: 25px;
+                                    padding: 7px 1rem;
+                                    display: block;
+                                    width: 100%;
+                                    text-align: center;
+                                    text-decoration: none;
+                                    border: 1px solid $black;
+                                    font-weight: 700;
+                                    font-size: calc(.9rem + .7vw);
+                                    min-height: auto;
+                                    outline: none;
+                                    box-shadow: none !important;
+                                    transition: .2s;
+                                    &:hover{
+                                        background: $white;
+                                        color: $black;
+                                    }
+                                }
+                            }
+                            .actions{
+                                display: none;
+                                .coupon{
+                                    .input-text{
+                                        width: 100%;
+                                    }
+                                    .button{
+                                        background: $black;
+                                        color: $white;
+                                        border-radius: 25px;
+                                        padding: 7px 1rem;
+                                        display: block;
+                                        width: 100%;
+                                        margin-top: 10px;
+                                        text-align: center;
+                                        border: 1px solid $black;
+                                        font-weight: 600;
+                                        font-size: calc(.9rem + .7vw);
+                                        min-height: auto;
+                                        outline: none;
+                                        box-shadow: none !important;
+                                        transition: .2s;
+                                        &:hover{
+                                            background: $white;
+                                            color: $black;
+                                        }
+                                    }
+                                }
+                                .button{
+                                    background: $black;
+                                    color: $white;
+                                    border-radius: 25px;
+                                    padding: 7px 1rem;
+                                    text-align: center;
+                                    border: 1px solid $black;
+                                    font-weight: 600;
+                                    font-size: calc(.9rem + .7vw);
+                                    min-height: auto;
+                                    outline: none;
+                                    box-shadow: none !important;
+                                    transition: .2s;
+                                    &:hover{
+                                        background: $white;
+                                        color: $black;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

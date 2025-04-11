@@ -1,0 +1,28 @@
+.tabs-after-product-slide-partial-a712ee {
+    padding: 1rem 0 5rem 0;
+    .the-widget{
+        max-width: 340px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.7rem;
+        height: 100%;
+        .title-and-figure{
+            position: relative;
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+        .description{
+            p{
+                font-size: $p;
+                color: $black;
+                font-weight: 400;
+                @media(max-width:500px){
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,239 @@
+.products-slide-partial-3a813f {
+    background: $white;
+    padding: 80px 0;
+    .top-content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .texts{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            h2{
+                color: $black;
+                font-weight: 600;
+                font-size: calc(1.9rem + 1vw);
+                margin-bottom: 0;
+            }
+            p{
+                font-size: $p;
+                color: $black;
+                margin-bottom: 0;
+            }
+        }
+        /*============== Ctas content ==============*/ 
+        .ctas{
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            .see-all-contaian{
+                a{
+                    display: flex;
+                    text-decoration: none;
+                    align-items: center;
+                    transition: .2s;
+                    .text{
+                        background: $black;
+                        padding: 9px 1.6rem 10px 1.6rem;
+                        border-radius: 20px;
+                        color: $marron;
+                        margin-right: .5rem;
+                        height: 40px;
+                        position: relative;
+                        font-size: 1.2rem;
+                        font-weight: 500;
+                        line-height: 1.2;
+                        &::before{
+                            content: '';
+                            display: block;
+                            width: 20px;
+                            height: 15px;
+                            position: absolute;
+                            right: -12%;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            z-index: 1;
+                            background: $black;
+                        }
+                    }
+                    .svg{
+                        position: relative;
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: $black;
+                        &::after{
+                            content: '';
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            position: absolute;
+                            background: $white;
+                            left: -35%;
+                            transform: translateX(35%);
+                            top: 9.9%;
+                            z-index: 100;
+                        }
+                        &::before{
+                            content: '';
+                            width: 12px;
+                            height: 12px;
+                            border-radius: 50%;
+                            position: absolute;
+                            background: $white;
+                            left: -35%;
+                            transform: translateX(35%);
+                            top: 59.9%;
+                            z-index: 100;
+                        }
+                        svg{
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 14px;
+                            height: auto;
+                            color: $marron;
+                        }
+                    }
+                    &:hover{
+                        .text{
+                            background: $marron;
+                            color: $black;
+                            &::before{
+                                background: $marron;
+                            }
+                        }
+                        .svg{
+                            background: $marron;
+                            svg{
+                               g{
+                                g{
+                                    line{
+                                        stroke: $black;
+                                    }
+                                }
+                               }
+                            }
+                        }
+                    }
+                }
+            }
+            .nav-slide-products{
+                ul{
+                    display: flex;
+                    align-items: center;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    gap: 12px;
+                    li{
+                        a{
+                            background: transparent;
+                            border: none;
+                            outline: none;
+                            span{
+                                display: block;
+                                width: 40px;
+                                height: 40px;
+                                border: 1px solid $black;
+                                border-radius: 50%;
+                                position: relative;
+                                &::before{
+                                    content: '';
+                                    width: 18px;
+                                    height: 18px;
+                                    border-left: 2px solid $black;
+                                    border-bottom: 2px solid $black;
+                                    position: absolute;
+                                    top: 50%;
+                                }
+                            }
+                        }
+                        .prev{
+                            span{
+                                &::before{
+                                    left: 60%;
+                                    transform: translate(-50%, -50%) rotate(40deg);
+                                }
+                            }
+                        }
+                        .next{
+                            span{
+                                &::before{
+                                    left: 45%;
+                                    transform: translate(-50%, -50%) rotate(224deg);
+                                }
+                            }
+                        }
+                        .disabled{
+                            opacity: .5;
+                        }
+                    }
+                }
+            }
+        }
+        @media(max-width:768px){
+            flex-direction: column;
+            .texts{
+                width: 100%;
+                flex-direction: column;
+                text-align: center;
+                gap: 0;
+                margin-bottom: 1.5rem;
+                h2{
+                    font-size: calc(2.5rem + 1vw);
+                }
+                p{
+                    font-size: 18px;
+                }
+            }
+            .ctas{
+                display: none;
+            }
+        }
+    }
+    /*================ Product slide ===============*/
+    .product-list{
+        display: -webkit-inline-box;
+        align-items: center;
+        gap: 10px;
+        overflow-x: auto;
+        width: 100%;
+        scroll-behavior: smooth;
+        &::-webkit-scrollbar {
+            height: 6px;
+            background: #cfcfcf;
+            border-radius: 20px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: #6b6b6b;
+            height: 6px;
+            border-radius: 20px;
+        }
+        .woocommerce{
+            width: 33.33%;
+        }
+        @media(max-width:768px){
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            .woocommerce{
+                width: 48%;
+                .image-contain{
+                    span{
+                        font-size: 12px;
+                        left: 5%;
+                        transform: translateX(-5%);
+                    }
+                }
+                .product-card{
+                    .text-contain{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,90 @@
+.secondary-banner-partial-77f06b {
+    /*============ Banner ===========*/
+    .banner-contain{
+        position: relative;
+        .galleries{
+            opacity: 0;
+            transition: .2s;
+            img{
+                width: 100%;
+                height: 75vh;
+                object-fit: cover;
+                @media screen and (min-width:510px) and (max-width:768px){
+                    height: 85vh;
+                }
+            }
+        }
+        .banner-texts{
+            position: absolute;
+            z-index: 1;
+            left: 6%;
+            top: 80%;
+            transform: translate(-6%, -80%);
+            max-width: 300px;
+            h3{
+                background: $white;
+                color: $black;
+                font-size: $p;
+                font-weight: 700;
+                padding: 2px 10px;
+            }
+            p{
+                background: $white;
+                color: $black;
+                padding: 2px 10px;
+                font-size: 16px;
+                margin-bottom: 9px;
+            }
+            a{
+                display: flex;
+                width: fit-content;
+                align-items: center;
+                gap:15px;
+                text-decoration: none;
+                background: $white;
+                border: 1px solid $white;
+                color: $black;
+                padding: 7px 1.3rem;
+                border-radius: 30px;
+                transition: .2s;
+                line-height: 1.2;
+                span{
+                    font-weight: 400;
+                    font-size: $p;
+                }
+                svg{
+                    width: 17px;
+                    height: auto;
+                }
+                &:hover{
+                    background: $black;
+                    color: $white;
+                    svg{
+                        g{
+                            g{
+                                line{
+                                    stroke: $white;
+                                }
+                            }
+                        }
+                    }
+                }
+                @media(max-width:500px){
+                    span{
+                        font-size: $p_movil;
+                    }
+                    svg{
+                        width: 14px;
+                    }
+                }
+            }
+            @media(max-width:510px){
+                left: 30%;
+                transform: translate(-30%, -80%);
+                h3{
+                    font-size: calc(1rem + 1vw);
+                }
+            }
+        }
+    }
+}

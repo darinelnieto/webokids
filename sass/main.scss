@@ -1,0 +1,28 @@
+@import 'default_theme';
+
+// Ditto include zone (don't delete anything below)
+// #DittoPartials
+@import "./partials/single-product/product-detail";
+@import "./partials/landing-category/slide-product";
+@import "./partials/landing-category/secondary-banner";
+@import "./partials/landing-category/primary-banner";
+@import "./partials/products/product-filter-movil";
+@import "./partials/products/product-filter";
+@import "./partials/products/product-list";
+@import "./partials/products/banner-products";
+@import "./partials/home/tabs-after-product-slide";
+@import "./partials/home/products-slide";
+@import "./partials/home/the-newest";
+@import "./partials/home/product-banner";
+@import "./partials/home/about-us";
+@import "./partials/home/banner";
+@import "./partials/globals/footer";
+@import "./partials/globals/header";
+
+// #DittoTemplates
+@import "./templates/wishlist-template";
+@import "./templates/woocomerce-general-template";
+@import "./templates/single-product-template";
+@import "./templates/landing-category-template";
+@import "./templates/archive-product-template";
+@import "./templates/home-template";

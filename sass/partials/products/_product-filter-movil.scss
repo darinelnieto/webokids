@@ -1,0 +1,468 @@
+.product-filter-movil-partial-8fbed6 {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    background: $white;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*============= Filter header =============*/
+    .filter-header{
+        border-bottom: 1px solid $marron;
+        padding: 1rem 0;
+        .text-filter{
+            color: $black;
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+        .controller-filter{
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            gap: 10px;
+            .filter-reset{
+                border: 1px solid $black;
+                border-radius: 20px;
+                padding: 5px 15px;
+                background: transparent;
+                color: $black;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                outline: none;
+                font-size: 16px;
+            }
+            .close-filter{
+                font-weight: 100;
+                background: transparent;
+                border: none;
+                color: $black;
+                font-size: 22px;
+            }
+        }
+    }
+    /*============= filter body =============*/
+    .filter-body{
+        padding: 1rem 0;
+        .applied-filter{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            .title{
+                font-size: 25px;
+                font-weight: 500;
+            }
+            #applied-list{
+                display: flex;
+                flex-wrap: wrap;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                gap: 12px;
+                li{
+                    display: flex;
+                    align-items: center;
+                    background: $beige;
+                    padding: 6px 10px;
+                    gap: 7px;
+                    width: fit-content;
+                    a{
+                        text-decoration: none;
+                        color: $black;
+                        font-size: 17px;
+                    }
+                    .filter-name{
+                        color: $black;
+                        font-size: 16px;
+                        line-height: 1;
+                    }
+                }
+            }
+        }
+        .filter{
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            /*============== By category ===============*/
+            .by-category{
+                .filter-name{
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    h4{
+                        color: $black;
+                        font-size: 22px;
+                        margin-bottom: 0;
+                        display: block;
+                        width: fit-content;
+                    }
+                    span{
+                        display: block;
+                        width: fit-content;
+                        svg{
+                            max-width: 25px;
+                            height: auto;
+                        }
+                    }
+                }
+                .the-filter{
+                    display: none;
+                    transition: .2s;
+                    padding: 10px 0;
+                    ul{
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                        li{
+                            a{
+                                display: flex;
+                                width: 100%;
+                                text-decoration: none;
+                                align-items: center;
+                                gap: 10px;
+                                .checkbox{
+                                    display: block;
+                                    width: 15px;
+                                    height: 15px;
+                                    border: 1px solid $black;
+                                    border-radius: 4px;
+                                    position: relative;
+                                    &::before{
+                                        visibility: hidden;
+                                        content: '';
+                                        width: 13px;
+                                        height: 6px;
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 50%;
+                                        transform: translate(-50%, -50%) rotate(-45deg);
+                                        border-bottom: 2px solid;
+                                        border-left: 2px solid;
+                                        border-color: $black;
+                                        transition: .2s;
+                                    }
+                                }
+                                .name{
+                                    font-size: 16px;
+                                    color: $black;
+                                }
+                            }
+                            a.active{
+                                .checkbox{
+                                    &::before{
+                                        visibility: visible;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .by-category.active{
+                .the-filter{
+                    display: block;
+                }
+            }
+            /*============== By color ==============*/
+            .by-color{
+                .filter-name{
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    h4{
+                        color: $black;
+                        font-size: 22px;
+                        margin-bottom: 0;
+                        display: block;
+                        width: fit-content;
+                    }
+                    span{
+                        display: block;
+                        width: fit-content;
+                        svg{
+                            max-width: 25px;
+                            height: auto;
+                        }
+                    }
+                }
+                .the-filter{
+                    display: none;
+                    transition: .2s;
+                    padding: 10px 0;
+                    ul{
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 8px;
+                        align-items: center;
+                        li{
+                            .this-color{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
+                                color: $black;
+                                text-decoration: none;
+                                .color{
+                                    width: 30px;
+                                    height: 30px;
+                                    background-repeat: no-repeat;
+                                    background-size: cover;
+                                    background-position: center;
+                                    border-radius: 50%;
+                                    position: relative;
+                                    overflow: hidden;
+                                    &::before{
+                                        content: '';
+                                        width: 15px;
+                                        height: 7px;
+                                        border-left: 2px solid;
+                                        border-bottom: 2px solid;
+                                        border-color: $white;
+                                        visibility: hidden;
+                                        position: absolute;
+                                        left: 50%;
+                                        top: 50%;
+                                        transform: translate(-50%, -50%) rotate(-45deg);
+                                        z-index: 1;
+                                    }
+                                    &::after{
+                                        content: '';
+                                        width: 100%;
+                                        height: 100%;
+                                        background: rgba(0,0,0, .5);
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        visibility: hidden;
+                                        transition: .5s;
+                                    }
+                                }
+                                .name{
+                                    font-size: 16px;
+                                    color: $black;
+                                    transition: .2s;
+                                    position: relative;
+                                }
+                            }
+                            .this-color.active{
+                                .color{
+                                    &::after, &::before{
+                                        visibility: visible;
+                                    }
+                                }
+                                .name{
+                                    font-weight: 700;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .by-color.active{
+                .the-filter{
+                    display: block;
+                }
+            }
+            /*=============== By size ===============*/
+            .by-size{
+                .filter-name{
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    h4{
+                        color: $black;
+                        font-size: 22px;
+                        margin-bottom: 0;
+                        display: block;
+                        width: fit-content;
+                    }
+                    span{
+                        display: block;
+                        width: fit-content;
+                        svg{
+                            max-width: 25px;
+                            height: auto;
+                        }
+                    }
+                }
+                .the-filter{
+                    display: none;
+                    transition: .2s;
+                    padding: 10px 0;
+                    ul{
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                        li{
+                            a{
+                                display: flex;
+                                width: 100%;
+                                text-decoration: none;
+                                align-items: center;
+                                gap: 10px;
+                                .checkbox{
+                                    display: block;
+                                    width: 15px;
+                                    height: 15px;
+                                    border: 1px solid $black;
+                                    border-radius: 4px;
+                                    position: relative;
+                                    &::before{
+                                        visibility: hidden;
+                                        content: '';
+                                        width: 13px;
+                                        height: 6px;
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 50%;
+                                        transform: translate(-50%, -50%) rotate(-45deg);
+                                        border-bottom: 2px solid;
+                                        border-left: 2px solid;
+                                        border-color: $black;
+                                        transition: .2s;
+                                    }
+                                }
+                                .name{
+                                    font-size: 16px;
+                                    color: $black;
+                                }
+                            }
+                            a.active{
+                                .checkbox{
+                                    &::before{
+                                        visibility: visible;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .by-size.active{
+                .the-filter{
+                    display: block;
+                }
+            }
+        }
+    }
+    /*================ Filter footer ================*/
+    .filter-footer{
+        padding: 1rem 0;
+        border-top: 1px solid $marron;
+        .filter-run{
+            display: flex;
+            background: transparent;
+            border: none;
+            align-items: center;
+            transition: .2s;
+            justify-content: center;
+            width: 100%;
+            .text{
+                background: $black;
+                padding: 9px 1.6rem 10px 1.6rem;
+                border-radius: 20px;
+                color: $marron;
+                margin-right: .5rem;
+                height: 40px;
+                position: relative;
+                font-size: 1.2rem;
+                font-weight: 500;
+                line-height: 1.2;
+                &::before{
+                    content: '';
+                    display: block;
+                    width: 20px;
+                    height: 15px;
+                    position: absolute;
+                    right: -12%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: 1;
+                    background: $black;
+                }
+            }
+            .svg{
+                position: relative;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: $black;
+                &::after{
+                    content: '';
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    position: absolute;
+                    background: $white;
+                    left: -35%;
+                    transform: translateX(35%);
+                    top: 9.9%;
+                    z-index: 100;
+                }
+                &::before{
+                    content: '';
+                    width: 12px;
+                    height: 12px;
+                    border-radius: 50%;
+                    position: absolute;
+                    background: $white;
+                    left: -35%;
+                    transform: translateX(35%);
+                    top: 59.9%;
+                    z-index: 100;
+                }
+                svg{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 14px;
+                    height: auto;
+                    color: $marron;
+                }
+            }
+            &:hover{
+                .text{
+                    background: $marron;
+                    color: $black;
+                    &::before{
+                        background: $marron;
+                    }
+                }
+                .svg{
+                    background: $marron;
+                    svg{
+                        g{
+                        g{
+                            line{
+                                stroke: $black;
+                            }
+                        }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
