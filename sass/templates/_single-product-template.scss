@@ -271,6 +271,11 @@
                 }
             }
         }
+        .woocommerce-variation-add-to-cart{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
         .shipping-details{
             list-style: none;
             padding: 0;
