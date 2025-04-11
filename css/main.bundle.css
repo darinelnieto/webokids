@@ -2749,6 +2749,11 @@ html, body {
   align-items: center;
   gap: 10px;
 }
+@media (max-width: 768px) {
+  .single-product-template-134541 .content-product-sticky .woocommerce-variation-add-to-cart {
+    flex-direction: column;
+  }
+}
 .single-product-template-134541 .content-product-sticky .shipping-details {
   list-style: none;
   padding: 0;
