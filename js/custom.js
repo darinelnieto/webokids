@@ -15,7 +15,6 @@ if(screen < 768){
 $(window).on('scroll', function(){
     var height = $(window).scrollTop();
     var scrollTop = $('.header-contain').height() - 10;
-    console.log(height, scrollTop);
     if(height < scrollTop){
         // Scroll down
         $('.header-contain').removeClass('sticky');

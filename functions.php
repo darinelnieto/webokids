@@ -184,3 +184,35 @@ add_filter('woocommerce_product_related_products_heading', '__return_empty_strin
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 add_filter('yith_wcwl_wishlist_title', '__return_empty_string');
+/*============== Sales =============*/
+add_filter('woocommerce_sale_flash', 'custom_sale_percentage_badge', 20, 3);
+function custom_sale_percentage_badge($html, $post, $product) {
+    if ($product->is_type('variable')) {
+        $percentage = 0;
+        foreach ($product->get_children() as $child_id) {
+            $variation = wc_get_product($child_id);
+            if ($variation->is_on_sale()) {
+                $regular = (float) $variation->get_regular_price();
+                $sale = (float) $variation->get_sale_price();
+                if ($regular > 0 && $sale > 0) {
+                    $current_percentage = round((($regular - $sale) / $regular) * 100);
+                    if ($current_percentage > $percentage) {
+                        $percentage = $current_percentage;
+                    }
+                }
+            }
+        }
+    } else {
+        $regular = (float) $product->get_regular_price();
+        $sale = (float) $product->get_sale_price();
+        $percentage = $regular > 0 && $sale > 0
+            ? round((($regular - $sale) / $regular) * 100)
+            : 0;
+    }
+
+    if ($percentage > 0) {
+        return '<span class="onsale">' . $percentage . '% off</span>';
+    }
+
+    return $html;
+}

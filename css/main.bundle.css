@@ -49,6 +49,23 @@ html, body {
   width: 100%;
   height: auto;
 }
+.woocommerce .product-card .image-contain .onsale {
+  position: absolute;
+  bottom: 8%;
+  left: 1%;
+  background: #ffffff;
+  border-radius: 0;
+  display: flex;
+  height: fit-content;
+  min-height: auto;
+  min-width: fit-content;
+  padding: 5px 10px;
+  color: #000000;
+  line-height: 1.2;
+  top: inherit;
+  font-size: 18px;
+  font-weight: 600;
+}
 .woocommerce .product-card .image-contain .price {
   position: absolute;
   bottom: 0;

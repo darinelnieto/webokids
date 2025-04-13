@@ -56,6 +56,23 @@ html, body{
                 width: 100%;
                 height: auto;
             }
+            .onsale{
+                position: absolute;
+                bottom: 8%;
+                left: 1%;
+                background: $white;
+                border-radius: 0;
+                display: flex;
+                height: fit-content;
+                min-height: auto;
+                min-width: fit-content;
+                padding: 5px 10px;
+                color: $black;
+                line-height: 1.2;
+                top: inherit;
+                font-size: 18px;
+                font-weight: 600;
+            }
             .price{
                 position: absolute;
                 bottom: 0;
