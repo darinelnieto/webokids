@@ -105,10 +105,14 @@ $('.zoom-trigger').each(function() {
 /*============== Variations selected ==============*/
 $('#options-color').on('click', 'li', function(){
     $('#options-color li').removeClass('active');
-    $(this).addClass('active');
     option = $(this).children('.variation-checkbox').val();
     $('#pa_essize').val(option).trigger('change');
-    console.log(option);
+    var stock = $('.woocommerce-variation-availability p').text();
+    if(stock === 'Agotado' || stock === 'Out of stock'){
+        $(this).addClass('disabled');
+    }else{
+        $(this).addClass('active');
+    }
 });
 /*============= Reset variations =============*/
 $('.reset_variations').on('click', function(){

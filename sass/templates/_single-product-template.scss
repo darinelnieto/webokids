@@ -114,7 +114,7 @@
         max-width: 500px;
         padding: 2rem 3rem;
         @media(max-width:768px){
-            padding: 2rem 1rem;
+            padding: 2rem 1rem 0 1rem;
         }
         .product_title{
             font-weight: 700;
@@ -139,7 +139,7 @@
         .variations_form{
             .variations{
                 position: relative;
-                padding-top: 1rem;
+                padding: 1rem 0 .6rem 0;
                 &::before{
                     position: absolute;
                     top: 0;
@@ -149,12 +149,56 @@
                     content: '';
                     background: #eaddd7;
                 }
-                h4{
-                    font-size: calc(1rem + .8vw);
-                    font-weight: 600;
-                    color: $black;
-                    line-height: 1;
+                &::after{
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    content: '';
+                    background: #eaddd7;
+                }
+                .variations-title{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                     margin-bottom: 12px;
+                    h4{
+                        font-size: calc(1rem + .8vw);
+                        font-weight: 600;
+                        color: $black;
+                        line-height: 1;
+                        margin-bottom: 0;
+                    }
+                    /*=============== Size guide ==============*/
+                    .size-guide{
+                        a{
+                            display: flex;
+                            width: fit-content;
+                            text-decoration: none;
+                            align-items: center;
+                            gap: 14px;
+                            img{
+                                width: 44px;
+                                height: 22px;
+                            }
+                            .text{
+                                position: relative;
+                                font-weight: 500;
+                                font-size: 16px;
+                                color: $black;
+                                &::after{
+                                    content: '';
+                                    position: absolute;
+                                    bottom: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 1px;
+                                    background: $black;
+                                }
+                            }
+                        }
+                    }
                 }
                 #pa_essize{
                     display: none;
@@ -167,107 +211,37 @@
                     gap: 5px;
                     margin-bottom: 7px;
                     li{
-                        display: flex;
-                        align-items: center;
-                        width: fit-content;
                         outline: none;
                         cursor: pointer;
-                        gap: 7px;
                         width: 19%;
-                        .checked{
-                            display: block;
-                            width: 15px;
-                            height: 15px;
-                            border: 1px solid $black;
-                            border-radius: 4px;
-                            position: relative;
-                            &::before{
-                                content: '';
-                                width: 11px;
-                                height: 5px;
-                                border-left: 1px solid $black;
-                                border-bottom: 1px solid $black;
-                                position: absolute;
-                                left: 50%;
-                                top: 35%;
-                                transform: translate(-50%, -35%) rotate(-45deg);
-                                opacity: 0;
-                                transition: .5s;
-                            }
-                        }
+                        border: 1px solid $black;
+                        text-align: center;
+                        padding: 4px 0;
                         .text{
                             font-size: 16px;
                             color: $black;
                             font-weight: 400;
                         }
                     }
-                    li.disabled {
-                        opacity: 0.5;
+                    li.disabled{
+                        opacity: .5;
+                        background: $black;
                         pointer-events: none;
                         cursor: not-allowed;
+                        span{
+                            color: $marron;
+                        }
                     }
                     li.active{
-                        .checked{
-                            &::before{
-                                opacity: 1;
-                            }
+                        background: $black;
+                        span{
+                            color: $marron;
                         }
                     }
                 }
                 /*=============== Reset variations ===============*/
                 .reset_variations{
-                    font-size: 16px;
-                    color: $black;
-                    font-weight: 600;
-                    text-decoration: none;
-                    display: block;
-                    width: fit-content;
-                    transition: .2s;
-                    margin-bottom: .4rem;
-                    &:hover{
-                        color: $red;
-                    }
-                }
-                /*=============== Size guide ==============*/
-                .size-guide{
-                    padding: .6rem 0; 
-                    position: relative;
-                    &::before{
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 1px;
-                        content: '';
-                        background: #eaddd7;
-                    }
-                    a{
-                        display: flex;
-                        width: fit-content;
-                        text-decoration: none;
-                        align-items: center;
-                        gap: 14px;
-                        img{
-                            width: 44px;
-                            height: 22px;
-                        }
-                        .text{
-                            position: relative;
-                            font-weight: 500;
-                            font-size: 16px;
-                            padding: 4px 0;
-                            color: $black;
-                            &::after{
-                                content: '';
-                                position: absolute;
-                                bottom: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 1px;
-                                background: $black;
-                            }
-                        }
-                    }
+                    display: none !important;
                 }
             }
         }
@@ -300,10 +274,21 @@
         }
         .single_variation_wrap{
             display: flex;
-            align-items: center;
-            flex-direction: row-reverse;
-            justify-content: flex-end;
+            align-items: flex-end;
             gap: 10px;
+            .single_variation{
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                .woocommerce-variation-description{
+                    display: none !important;
+                }
+                .woocommerce-variation-price{
+                    .price{
+                        font-size: 20px;
+                    }
+                }
+            }
             .stock{
                 font-size: 16px;
                 color: $black;
@@ -312,10 +297,6 @@
             }
             .out-of-stock{
                 color: $red;
-            }
-            @media(max-width:510px){
-                flex-direction: column;
-                align-items: flex-start;
             }
         }
         /*=============== Add to car ===============*/
@@ -421,6 +402,7 @@
         }
     }
     .yith-add-to-wishlist-button-block{
+        margin: 0;
         a{
             display: flex;
             flex-direction: row-reverse;
@@ -428,14 +410,20 @@
             align-items: center;
             background: $black;
             color: $marron;
-            border-radius: 20px;
+            border-radius: 50%;
             height: 40px;
-            text-align: center;
-            padding: 0 1rem;
-            gap: 20px !important;        
+            width: 40px;
+            text-align: center;      
             transition: .2s;
+            .yith-wcwl-add-to-wishlist-button__label{
+                display: none;
+            }
             svg{
                 color: $marron !important;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
             }
             &:hover{
                 background: $marron;

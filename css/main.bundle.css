@@ -2591,7 +2591,7 @@ html, body {
 }
 @media (max-width: 768px) {
   .single-product-template-134541 .content-product-sticky {
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 0 1rem;
   }
 }
 .single-product-template-134541 .content-product-sticky .product_title {
@@ -2617,9 +2617,8 @@ html, body {
 }
 .single-product-template-134541 .content-product-sticky .variations_form .variations {
   position: relative;
-  padding-top: 1rem;
+  padding: 1rem 0 0.6rem 0;
   /*=============== Reset variations ===============*/
-  /*=============== Size guide ==============*/
 }
 .single-product-template-134541 .content-product-sticky .variations_form .variations::before {
   position: absolute;
@@ -2630,12 +2629,54 @@ html, body {
   content: "";
   background: #eaddd7;
 }
-.single-product-template-134541 .content-product-sticky .variations_form .variations h4 {
+.single-product-template-134541 .content-product-sticky .variations_form .variations::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  content: "";
+  background: #eaddd7;
+}
+.single-product-template-134541 .content-product-sticky .variations_form .variations .variations-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  /*=============== Size guide ==============*/
+}
+.single-product-template-134541 .content-product-sticky .variations_form .variations .variations-title h4 {
   font-size: calc(1rem + 0.8vw);
   font-weight: 600;
   color: #000000;
   line-height: 1;
-  margin-bottom: 12px;
+  margin-bottom: 0;
+}
+.single-product-template-134541 .content-product-sticky .variations_form .variations .variations-title .size-guide a {
+  display: flex;
+  width: fit-content;
+  text-decoration: none;
+  align-items: center;
+  gap: 14px;
+}
+.single-product-template-134541 .content-product-sticky .variations_form .variations .variations-title .size-guide a img {
+  width: 44px;
+  height: 22px;
+}
+.single-product-template-134541 .content-product-sticky .variations_form .variations .variations-title .size-guide a .text {
+  position: relative;
+  font-weight: 500;
+  font-size: 16px;
+  color: #000000;
+}
+.single-product-template-134541 .content-product-sticky .variations_form .variations .variations-title .size-guide a .text::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #000000;
 }
 .single-product-template-134541 .content-product-sticky .variations_form .variations #pa_essize {
   display: none;
@@ -2649,34 +2690,12 @@ html, body {
   margin-bottom: 7px;
 }
 .single-product-template-134541 .content-product-sticky .variations_form .variations ul li {
-  display: flex;
-  align-items: center;
-  width: fit-content;
   outline: none;
   cursor: pointer;
-  gap: 7px;
   width: 19%;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations ul li .checked {
-  display: block;
-  width: 15px;
-  height: 15px;
   border: 1px solid #000000;
-  border-radius: 4px;
-  position: relative;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations ul li .checked::before {
-  content: "";
-  width: 11px;
-  height: 5px;
-  border-left: 1px solid #000000;
-  border-bottom: 1px solid #000000;
-  position: absolute;
-  left: 50%;
-  top: 35%;
-  transform: translate(-50%, -35%) rotate(-45deg);
-  opacity: 0;
-  transition: 0.5s;
+  text-align: center;
+  padding: 4px 0;
 }
 .single-product-template-134541 .content-product-sticky .variations_form .variations ul li .text {
   font-size: 16px;
@@ -2685,64 +2704,21 @@ html, body {
 }
 .single-product-template-134541 .content-product-sticky .variations_form .variations ul li.disabled {
   opacity: 0.5;
+  background: #000000;
   pointer-events: none;
   cursor: not-allowed;
 }
-.single-product-template-134541 .content-product-sticky .variations_form .variations ul li.active .checked::before {
-  opacity: 1;
+.single-product-template-134541 .content-product-sticky .variations_form .variations ul li.disabled span {
+  color: #D9C2B6;
+}
+.single-product-template-134541 .content-product-sticky .variations_form .variations ul li.active {
+  background: #000000;
+}
+.single-product-template-134541 .content-product-sticky .variations_form .variations ul li.active span {
+  color: #D9C2B6;
 }
 .single-product-template-134541 .content-product-sticky .variations_form .variations .reset_variations {
-  font-size: 16px;
-  color: #000000;
-  font-weight: 600;
-  text-decoration: none;
-  display: block;
-  width: fit-content;
-  transition: 0.2s;
-  margin-bottom: 0.4rem;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations .reset_variations:hover {
-  color: #FF4438;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations .size-guide {
-  padding: 0.6rem 0;
-  position: relative;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations .size-guide::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  content: "";
-  background: #eaddd7;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations .size-guide a {
-  display: flex;
-  width: fit-content;
-  text-decoration: none;
-  align-items: center;
-  gap: 14px;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations .size-guide a img {
-  width: 44px;
-  height: 22px;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations .size-guide a .text {
-  position: relative;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 4px 0;
-  color: #000000;
-}
-.single-product-template-134541 .content-product-sticky .variations_form .variations .size-guide a .text::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: #000000;
+  display: none !important;
 }
 .single-product-template-134541 .content-product-sticky .woocommerce-variation-add-to-cart {
   display: flex;
@@ -2775,10 +2751,19 @@ html, body {
 }
 .single-product-template-134541 .content-product-sticky .single_variation_wrap {
   display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  align-items: flex-end;
   gap: 10px;
+}
+.single-product-template-134541 .content-product-sticky .single_variation_wrap .single_variation {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.single-product-template-134541 .content-product-sticky .single_variation_wrap .single_variation .woocommerce-variation-description {
+  display: none !important;
+}
+.single-product-template-134541 .content-product-sticky .single_variation_wrap .single_variation .woocommerce-variation-price .price {
+  font-size: 20px;
 }
 .single-product-template-134541 .content-product-sticky .single_variation_wrap .stock {
   font-size: 16px;
@@ -2788,12 +2773,6 @@ html, body {
 }
 .single-product-template-134541 .content-product-sticky .single_variation_wrap .out-of-stock {
   color: #FF4438;
-}
-@media (max-width: 510px) {
-  .single-product-template-134541 .content-product-sticky .single_variation_wrap {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 .single-product-template-134541 .content-product-sticky .cart {
   display: flex;
@@ -2887,6 +2866,9 @@ html, body {
 .single-product-template-134541 .content-product-sticky .single_add_to_cart_button:hover .svg svg g g line {
   stroke: #000000;
 }
+.single-product-template-134541 .yith-add-to-wishlist-button-block {
+  margin: 0;
+}
 .single-product-template-134541 .yith-add-to-wishlist-button-block a {
   display: flex;
   flex-direction: row-reverse;
@@ -2894,15 +2876,21 @@ html, body {
   align-items: center;
   background: #000000;
   color: #D9C2B6;
-  border-radius: 20px;
+  border-radius: 50%;
   height: 40px;
+  width: 40px;
   text-align: center;
-  padding: 0 1rem;
-  gap: 20px !important;
   transition: 0.2s;
+}
+.single-product-template-134541 .yith-add-to-wishlist-button-block a .yith-wcwl-add-to-wishlist-button__label {
+  display: none;
 }
 .single-product-template-134541 .yith-add-to-wishlist-button-block a svg {
   color: #D9C2B6 !important;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .single-product-template-134541 .yith-add-to-wishlist-button-block a:hover {
   background: #D9C2B6;

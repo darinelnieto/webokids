@@ -3,7 +3,7 @@ $(window).scroll(function() {
     if (screen > 768) {
         var windowScrol = $(window).scrollTop();
         var position = $('.body-post').offset().top;
-        var heightContent = $('.end-sticky').offset().top - 720;
+        var heightContent = $('.end-sticky').offset().top - 580;
         if (windowScrol >= position) {
             $('.content-product-sticky').addClass('sticky');
         }
