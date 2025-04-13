@@ -2602,6 +2602,7 @@ html, body {
 }
 .single-product-template-134541 .content-product-sticky {
   max-width: 500px;
+  width: 100%;
   padding: 2rem 3rem;
   /*============= Variations ============*/
   /*=============== Add to car ===============*/
