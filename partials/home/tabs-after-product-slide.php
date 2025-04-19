@@ -10,11 +10,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 $widgets = get_field('companiy_widgets');
 if($widgets):
+    $title = get_field('widgets_title');
 ?>
 <section class="tabs-after-product-slide-partial-a712ee">
     <div class="container">
         <div class="row">
-            <?php foreach($widgets as $item): ?>
+            <?php if($title): ?>
+                <div class="col-12 text-center">
+                    <h2><?= $title; ?></h2>
+                </div>
+            <?php endif; foreach($widgets as $item): ?>
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="the-widget">
                         <div class="title-and-figure">

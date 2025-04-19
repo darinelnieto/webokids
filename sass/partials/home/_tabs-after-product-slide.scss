@@ -1,5 +1,17 @@
 .tabs-after-product-slide-partial-a712ee {
     padding: 1rem 0 5rem 0;
+    h2{
+        color: $black;
+        font-size: scaleVW(122, 1920);
+        margin-bottom: scaleVW(167, 1920);
+        font-weight: 700;
+        @media(max-width:768px){
+            padding: 0;
+            padding-bottom: scaleVW(40, 480);
+            text-align: center;
+            font-size: scaleVW(60, 480);
+        }
+    }
     .the-widget{
         max-width: 340px;
         margin: 0 auto;

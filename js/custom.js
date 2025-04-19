@@ -23,6 +23,17 @@ $(window).on('scroll', function(){
         $('.header-contain').addClass('sticky');
     }
 });
+/*=========== Policie click ===========*/
+$('.policies-container').on('click', 'label', function(){
+    var checked = $('input[type="checkbox"]', this);
+    if(checked.prop('checked')){
+        $('.checkbox', this).addClass('active');
+        console.log('activado');
+    }else{
+        $('.checkbox', this).removeClass('active');
+        console.log('desactivado');
+    }
+});
 /*============== Products slide home ===============*/
 $('.nav-slide-products .next').on('click', function(e){
     var slide_width = $('.product-list').width();
@@ -117,3 +128,24 @@ $('#options-color').on('click', 'li', function(){
 $('.reset_variations').on('click', function(){
     $('#options-color li').removeClass('active');
 });
+/*============= FQA =============*/
+$('.fqas-list').on('click', '.question', function(){
+
+});
+var acc = $('.question');
+var i;
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function(e) {
+        this.parentElement.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            $('.fqas-list').removeClass('active');
+            this.parentElement.classList.toggle("active");
+            $('.answer').css({'display':'none'});
+            panel.style.display = "block";
+        }
+        e.preventDefault();
+    });
+}

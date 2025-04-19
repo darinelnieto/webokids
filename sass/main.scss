@@ -2,6 +2,9 @@
 
 // Ditto include zone (don't delete anything below)
 // #DittoPartials
+@import "./partials/about/about";
+@import "./partials/contact/faqs";
+@import "./partials/contact/contact";
 @import "./partials/single-product/product-detail";
 @import "./partials/landing-category/slide-product";
 @import "./partials/landing-category/secondary-banner";
@@ -20,6 +23,10 @@
 @import "./partials/globals/header";
 
 // #DittoTemplates
+@import "./templates/size-guide-template";
+@import "./templates/policies-template";
+@import "./templates/about-us-template";
+@import "./templates/contact-us-template";
 @import "./templates/wishlist-template";
 @import "./templates/woocomerce-general-template";
 @import "./templates/single-product-template";

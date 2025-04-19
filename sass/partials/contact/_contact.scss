@@ -1,0 +1,306 @@
+.contact-partial-a7f8d8 {
+    background: $white;
+    position: relative;
+    padding: scaleVW(96, 1920) 0;
+    &::before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: scaleVW(280, 1920);
+        background: $beige;
+        position: absolute;
+        top: scaleVW(425, 1920);
+        transform: translateY(-30%);
+        @media(max-width:768px){
+            display: none;
+        }
+    }
+    #contact-contain{
+        .title{
+            text-align: right;
+            padding: 0 scaleVW(172, 1920) scaleVW(90, 1920) scaleVW(172, 1920);
+            margin-bottom: 0;
+            font-size: scaleVW(69, 1920);
+            font-weight: 700;
+            @media(max-width:768px){
+                padding: 0;
+                padding-bottom: scaleVW(60, 480);
+                text-align: center;
+                font-size: scaleVW(60, 480);
+            }
+        }
+        .contact-link{
+            text-decoration: none;
+            width: scaleVW(428, 1920);
+            height: scaleVW(428, 1920);
+            display: block;
+            .contact-item{
+                position: relative;
+                img{
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            @media(max-width:768px){
+                width: 100%;
+                height: auto;
+            }
+        }
+        /*============ form ============*/
+        .form-content{
+            background: $blue;
+            padding: scaleVW(36, 1920) scaleVW(45, 1920);
+            width: 360px;
+            max-width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: scaleVW(35, 1920);
+            @media(max-width:768px){
+                gap: scaleVW(35, 480);
+                padding: scaleVW(30, 480) scaleVW(40, 480);
+                width: scaleVW(480, 480);
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            h2{
+                color: $white;
+                font-size: scaleVW(40, 1920);
+                line-height: 1.2;
+                margin-bottom:0;
+                font-weight: 500;
+                @media(max-width:768px){
+                    font-size: scaleVW(40, 480);
+                }
+            }
+            .form{
+                .input-contain{
+                    p{
+                        position: relative;
+                        margin: 0;
+                        display: flex;
+                        flex-direction: column;
+                        gap: scaleVW(12, 1920);
+                        margin-bottom: scaleVW(12, 1920);
+                        @media(max-width:768px){
+                            margin-bottom: scaleVW(12, 480);
+                            gap: scaleVW(12, 480);
+                        }
+                        br{
+                            display: none;
+                        }
+                        label{
+                            font-size: scaleVW(17, 1920);
+                            color: $white;
+                            font-weight: 500;
+                            line-height: 1.2;
+                            display: block;
+                            @media(max-width:768px){
+                                font-size: scaleVW(17, 480);
+                            }
+                        }
+                        input{
+                            width: 100%;
+                            background: transparent;
+                            border: 1px solid $white;
+                            border-radius: 10px;
+                            outline: none;
+                            position: relative;
+                            z-index: 1;
+                            padding-left: 10px;
+                            color: $white;
+                            font-size: scaleVW(20, 1920);
+                            font-weight: 300;
+                            height: 32px;
+                            @media(max-width:768px){
+                                font-size: scaleVW(16, 480);
+                            }
+                        }
+                        textarea{
+                            width: 100%;
+                            height: scaleVW(163, 1920);
+                            background: transparent;
+                            border: 1px solid $white;
+                            border-radius: 15px;
+                            outline: none;
+                            padding-left: 10px;
+                            color: $white;
+                            font-size: scaleVW(20, 1920);
+                            font-weight: 300;
+                            @media(max-width:768px){
+                                font-size: scaleVW(16, 480);
+                                height: scaleVW(100, 480);
+                            }
+                        }
+                        .wpcf7-not-valid-tip{
+                            position: absolute;
+                            right: 0;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            font-size: 16px;
+                            padding: 5px 10px;
+                        }
+                    }
+                }
+                .policies-container{
+                    label{
+                        cursor: pointer;
+                        display: flex;
+                        br, .wpcf7-form-control-wrap{
+                            display: none;
+                        }
+                        .checkbox{
+                            width: 14px;
+                            height: 14px;
+                            border: 1px solid $white;
+                            border-radius: 4px;
+                            position: relative;
+                            &::before{
+                                content: '';
+                                width: 10px;
+                                height: 4px;
+                                border-left: 2px solid $white;
+                                border-bottom: 2px solid $white;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%) rotate(-45deg);
+                                visibility: hidden;
+                                transition: .2s;
+                                display: none;
+                            }
+                        }
+                        .checkbox.active{
+                            &::before{
+                                visibility: visible;
+                                display: block;
+                            }
+                        }
+                        .text{
+                            padding-left: 10px;
+                            color: $white;
+                            width: 80%;
+                            font-size: 12px;
+                            font-weight: 300;
+                            a{
+                                color: $white;
+                            }
+                            @media(max-width:1150px){
+                                width: 90%;
+                            }
+                        }
+                    }
+                }
+                .submit{
+                    p{
+                        margin: 0;
+                        position: relative;
+                        br{
+                            display: none;
+                        }
+                        .wpcf7-spinner{
+                            position: absolute;
+                            bottom: 0;
+                            left: 50%;
+                            transform: translate(-50%, 0);
+                        }
+                        .button{
+                            display: flex;
+                            outline: none;
+                            border: none;
+                            background: transparent;
+                            padding: 0;
+                            width: 100%;
+                            .text-button{
+                                background: $black;
+                                padding: 9px 1.6rem 10px 1.6rem;
+                                border-radius: 20px;
+                                color: $marron;
+                                font-weight: 400;
+                                margin-right: .5rem;
+                                height: 40px;
+                                position: relative;
+                                font-size: 1.2rem;
+                                font-weight: 500;
+                                line-height: 1.2;
+                                &::before{
+                                    content: '';
+                                    display: block;
+                                    width: 20px;
+                                    height: 15px;
+                                    position: absolute;
+                                    right: -12%;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                    z-index: 1;
+                                    background: $black;
+                                }
+                            }
+                            .svg{
+                                position: relative;
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 50%;
+                                background: $black;
+                                &::after{
+                                    content: '';
+                                    width: 12px;
+                                    height: 12px;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    background: $blue;
+                                    left: -35%;
+                                    transform: translateX(35%);
+                                    top: 9.9%;
+                                    z-index: 1;
+                                }
+                                &::before{
+                                    content: '';
+                                    width: 12px;
+                                    height: 12px;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    background: $blue;
+                                    left: -35%;
+                                    transform: translateX(35%);
+                                    top: 59.9%;
+                                    z-index: 1;
+                                }
+                                svg{
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 14px;
+                                    height: auto;
+                                    color: $marron;
+                                }
+                            }
+                            &:hover{
+                                .text{
+                                    background: $marron;
+                                    color: $black;
+                                    &::before{
+                                        background: $marron;
+                                    }
+                                }
+                                .svg{
+                                    background: $marron;
+                                    svg{
+                                       g{
+                                        g{
+                                            line{
+                                                stroke: $black;
+                                            }
+                                        }
+                                       }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
