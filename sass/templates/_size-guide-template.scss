@@ -1,1 +1,196 @@
-#size-guide-template-21f420 {}
+#size-guide-template-21f420 {
+    padding: scaleVW(100, 1920) 0;
+    h1{
+        text-align: center;
+        margin-bottom: 0;
+        font-size: scaleVW(69, 1920);
+        font-weight: 700;
+        margin-bottom: scaleVW(109, 1920);
+        color: $black;
+        @media(max-width:768px){
+            padding: 0;
+            padding-bottom: scaleVW(60, 480);
+            text-align: center;
+            font-size: scaleVW(60, 480);
+        }
+    }
+    .description-after-title{
+        text-align: left;
+        color: $black;
+    }
+    .feature-image-and-description{
+        text-align: left;
+        display: flex;
+        gap: scaleVW(40, 1920);
+        .image-contain{
+            width:scaleVW(472, 1920);
+            height: scaleVW(578, 1920);
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        .description{
+            max-width: scaleVW(702, 1920);
+            font-weight: 300;
+        }
+        @media(max-width:510px){
+            flex-direction: column;
+            gap: scaleVW(40, 480);
+            .image-contain{
+                width:100%;
+                height: scaleVW(584, 480);
+            }
+            .description{
+                max-width: 100%;
+            }
+        }
+    }
+    .tabs-contain{
+        margin-top: scaleVW(90, 1920);
+        display: flex;
+        flex-direction: column;
+        gap: scaleVW(47, 1920);
+        .tab-contoller{
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li{
+                a{
+                    display: block;
+                    position: relative;
+                    width: scaleVW(223, 1920);
+                    height: scaleVW(111, 1920);
+                    border: 1px solid $black;
+                    text-decoration: none;
+                    color: $black;
+                    font-size: scaleVW(26, 1920);
+                    @media(max-width:768px){
+                        font-size: scaleVW(16, 480);
+                        width: scaleVW(123, 480);
+                        height: scaleVW(60.5, 480);
+                    }
+                    &::after{
+                        content: '';
+                        height: 3px;
+                        width: 100%;
+                        background: $black;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        display: none;
+                    }
+                    span{
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                    }
+                }
+            }
+            li.active{
+                a{
+                    &::after{
+                        display: block;
+                    }
+                }
+            }
+        }
+        .body-tab{
+            overflow-x: auto;
+            width: 100%;
+            padding-bottom: 1px;
+            display: -webkit-inline-box;
+            &::-webkit-scrollbar {
+                height: 6px;
+                background: #cfcfcf;
+                border-radius: 20px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: #6b6b6b;
+                height: 6px;
+                border-radius: 20px;
+            }
+            .the-body{
+                display: none;
+                width: 100%;
+                table{
+                    width: 100%;
+                    thead{
+                        background: $black;
+                        tr{
+                            display: flex;
+                            height: scaleVW(78, 1920);
+                            @media(max-width:768px){
+                                height: scaleVW(30, 480);
+                            }
+                            th{
+                                width: scaleVW(236, 1920);
+                                padding: scaleVW(29, 1920) 0;
+                                color: $white;
+                                line-height: 1;
+                                font-weight: 300;
+                                font-size: scaleVW(28, 1920);
+                                @media(max-width:768px){
+                                    font-size: scaleVW(14, 480);
+                                    width: scaleVW(136, 480);
+                                }
+                            }
+                            th:first-child{
+                                width: scaleVW(328, 1920);
+                                @media(max-width:768px){
+                                    width: scaleVW(158, 480);
+                                }
+                            }
+                        }
+                    }
+                    tbody{
+                        tr{
+                            display: flex;
+                            height: scaleVW(78, 1920);
+                            border: 1px solid #e6d6ce;
+                            @media(max-width:768px){
+                                height: scaleVW(27, 480);
+                            }
+                            td{
+                                width: scaleVW(236, 1920);
+                                padding: scaleVW(29, 1920) 0;
+                                color: $black;
+                                line-height: 1;
+                                font-size: scaleVW(28, 1920);
+                                font-weight: 400;
+                                @media(max-width:768px){
+                                    font-size: scaleVW(14, 480);
+                                    width: scaleVW(136, 480);
+                                }
+                            }
+                            td:first-child{
+                                width: scaleVW(328, 1920);
+                                font-size: scaleVW(48, 1920);
+                                padding: scaleVW(16, 1920) 0;
+                                @media(max-width:768px){
+                                    font-size: scaleVW(17, 480);
+                                    width: scaleVW(158, 480);
+                                }
+                            }
+                            td:nth-child(2n){
+                                background: $beige;
+                            }
+                        }
+                        tr:first-child{
+                            border-bottom: none;
+                        }
+                    }
+                }
+            }
+            .the-body.active{
+                display: block;
+            }
+        }
+    }
+}

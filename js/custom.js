@@ -149,3 +149,12 @@ for (i = 0; i < acc.length; i++) {
         e.preventDefault();
     });
 }
+/*=============== Tabs Guide size ===============*/
+$('.tab-contoller').on('click', 'a', function(e){
+    $('.tab-contoller li').removeClass('active');
+    $(this).parent().addClass('active');
+    var tab = $(this).attr('href');
+    $('.body-tab .the-body').removeClass('active');
+    $('.body-tab .'+tab).addClass('active');
+    e.preventDefault();
+});
