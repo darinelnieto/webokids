@@ -3233,6 +3233,13 @@ html, body {
   text-decoration: none;
   color: #000000;
 }
+#woocomerce-general-template-347c6d .woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  padding: 0;
+}
+#woocomerce-general-template-347c6d .woocommerce-MyAccount-navigation ul li a {
+  font-weight: 600;
+}
 #woocomerce-general-template-347c6d .wp-block-woocommerce-cart-items-block table thead tr th {
   font-weight: 700;
   font-size: calc(0.7rem + 0.7vw);

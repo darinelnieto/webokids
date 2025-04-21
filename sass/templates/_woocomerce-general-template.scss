@@ -5,6 +5,17 @@
         text-decoration: none;
         color: $black;
     }
+    .woocommerce-MyAccount-navigation{
+        ul{
+            list-style: none;
+            padding: 0;
+            li{
+                a{
+                    font-weight: 600;
+                }
+            }
+        }
+    }
     .wp-block-woocommerce-cart-items-block{
         table{
             thead{
