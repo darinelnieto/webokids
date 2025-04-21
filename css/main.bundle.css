@@ -2791,6 +2791,7 @@ html, body {
 .header-partial-7cbee3 .beige-top {
   background: #F1E9E5;
   padding: 10px 0;
+  position: relative;
 }
 .header-partial-7cbee3 .beige-top .message {
   font-size: 16px;
@@ -2798,6 +2799,41 @@ html, body {
   text-align: center;
   font-weight: 300;
   margin-bottom: 0;
+}
+.header-partial-7cbee3 .beige-top .nav-login {
+  position: absolute;
+  top: 50%;
+  right: 0.78125vw;
+  transform: translateY(-50%);
+}
+.header-partial-7cbee3 .beige-top .nav-login ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1.875vw;
+}
+.header-partial-7cbee3 .beige-top .nav-login ul li {
+  position: relative;
+}
+.header-partial-7cbee3 .beige-top .nav-login ul li::after {
+  content: "";
+  width: 2px;
+  height: 0.9375vw;
+  background: #000000;
+  position: absolute;
+  right: -0.9375vw;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.header-partial-7cbee3 .beige-top .nav-login ul li a {
+  text-decoration: none;
+  color: #000000;
+  font-size: 1.09375vw;
+}
+.header-partial-7cbee3 .beige-top .nav-login ul li:last-child::after {
+  display: none;
 }
 .header-partial-7cbee3 .header-contain {
   background: #F9F6F5;

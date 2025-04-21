@@ -11,7 +11,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <section class="header-partial-7cbee3">
     <div class="beige-top">
-        <p class="message"><?= get_field('shipping_message', 'option'); ?></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-12" style="position:relative;">
+                    <p class="message"><?= get_field('shipping_message', 'option'); ?></p>
+                    <div class="nav-login">
+                        <?php wp_nav_menu(['menu' => 'My Account']); ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="header-contain">
         <div class="container">

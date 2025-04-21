@@ -2,12 +2,50 @@
     .beige-top{
         background: $beige;
         padding: 10px 0;
+        position: relative;
         .message{
             font-size: 16px;
             color: $black;
             text-align: center;
             font-weight: 300;
             margin-bottom: 0;
+        }
+        .nav-login{
+            position: absolute;
+            top: 50%;
+            right: scaleVW(15, 1920);
+            transform: translateY(-50%);
+            ul{
+                display: flex;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                gap: scaleVW(36, 1920);
+                li{
+                    position: relative;
+                    &::after{
+                        content: '';
+                        width: 2px;
+                        height: scaleVW(18, 1920);
+                        background: $black;
+                        position: absolute;
+                        right: scaleVW(-18, 1920);
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                    a{
+                        text-decoration: none;
+                        color: $black;
+                        font-size: scaleVW(21, 1920);
+                    }
+                }
+                li:last-child{
+                    &::after{
+                        display: none;
+                    }
+                }
+            }
         }
     }
     .header-contain{
