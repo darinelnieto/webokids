@@ -3229,6 +3229,10 @@ html, body {
   background: #ffffff;
   padding: 3rem 0;
 }
+#woocomerce-general-template-347c6d a {
+  text-decoration: none;
+  color: #000000;
+}
 #woocomerce-general-template-347c6d .wp-block-woocommerce-cart-items-block table thead tr th {
   font-weight: 700;
   font-size: calc(0.7rem + 0.7vw);

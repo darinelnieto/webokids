@@ -1,6 +1,10 @@
 #woocomerce-general-template-347c6d {
     background: $white;
     padding: 3rem 0;
+    a{
+        text-decoration: none;
+        color: $black;
+    }
     .wp-block-woocommerce-cart-items-block{
         table{
             thead{
