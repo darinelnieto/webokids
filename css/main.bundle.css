@@ -2826,7 +2826,7 @@ html, body {
 }
 @media (max-width: 768px) {
   .header-partial-7cbee3 .header-contain.sticky .nav-contain {
-    top: 100%;
+    top: 99%;
   }
 }
 
