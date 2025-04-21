@@ -13,13 +13,13 @@
 }
 
 p {
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   line-height: 1.3;
   font-weight: 400;
 }
 @media (max-width: 500px) {
   p {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 
@@ -51,7 +51,6 @@ html, body {
 }
 .woocommerce .product-card .image-contain .onsale {
   position: absolute;
-  bottom: 8%;
   left: 1%;
   background: #ffffff;
   border-radius: 0;
@@ -63,8 +62,14 @@ html, body {
   color: #000000;
   line-height: 1.2;
   top: inherit;
-  font-size: 18px;
+  font-size: 3.5416666667vw;
   font-weight: 600;
+}
+@media (min-width: 769px) {
+  .woocommerce .product-card .image-contain .onsale {
+    bottom: 2.34375vw;
+    font-size: 1.1458333333vw;
+  }
 }
 .woocommerce .product-card .image-contain .price {
   position: absolute;
@@ -75,23 +80,38 @@ html, body {
   background: #ffffff;
   color: #000000;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.1458333333vw;
   display: flex;
   gap: 5px;
+}
+@media (max-width: 769px) {
+  .woocommerce .product-card .image-contain .price {
+    font-size: 3.5416666667vw;
+  }
 }
 .woocommerce .product-card .text-contain {
   padding: 5px 18px;
 }
 .woocommerce .product-card .text-contain h2 {
   color: #000000;
-  font-size: 18px;
+  font-size: 1.1458333333vw;
   font-weight: 600;
   margin-bottom: 0;
 }
+@media (max-width: 768px) {
+  .woocommerce .product-card .text-contain h2 {
+    font-size: 3.9583333333vw;
+  }
+}
 .woocommerce .product-card .text-contain p {
   color: #666666;
-  font-size: 18px;
+  font-size: 1.1458333333vw;
   font-weight: 400;
+}
+@media (max-width: 768px) {
+  .woocommerce .product-card .text-contain p {
+    font-size: 3.9583333333vw;
+  }
 }
 
 /*============ Car pop up ============*/
@@ -547,7 +567,7 @@ html, body {
   margin-bottom: 0;
 }
 .slide-product-partial-48b2ef .top-content .texts p {
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   color: #000000;
   margin-bottom: 0;
 }
@@ -773,7 +793,7 @@ html, body {
 .secondary-banner-partial-77f06b .banner-contain .banner-texts h3 {
   background: #ffffff;
   color: #000000;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   font-weight: 700;
   padding: 2px 10px;
 }
@@ -800,7 +820,7 @@ html, body {
 }
 .secondary-banner-partial-77f06b .banner-contain .banner-texts a span {
   font-weight: 400;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
 }
 .secondary-banner-partial-77f06b .banner-contain .banner-texts a svg {
   width: 17px;
@@ -815,7 +835,7 @@ html, body {
 }
 @media (max-width: 500px) {
   .secondary-banner-partial-77f06b .banner-contain .banner-texts a span {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
   .secondary-banner-partial-77f06b .banner-contain .banner-texts a svg {
     width: 14px;
@@ -862,7 +882,7 @@ html, body {
 .primary-banner-partial-b387b2 .banner-contain .banner-texts h3 {
   background: #ffffff;
   color: #000000;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   font-weight: 700;
   padding: 2px 10px;
 }
@@ -889,7 +909,7 @@ html, body {
 }
 .primary-banner-partial-b387b2 .banner-contain .banner-texts a span {
   font-weight: 400;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
 }
 .primary-banner-partial-b387b2 .banner-contain .banner-texts a svg {
   width: 17px;
@@ -904,7 +924,7 @@ html, body {
 }
 @media (max-width: 500px) {
   .primary-banner-partial-b387b2 .banner-contain .banner-texts a span {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
   .primary-banner-partial-b387b2 .banner-contain .banner-texts a svg {
     width: 14px;
@@ -1804,7 +1824,7 @@ html, body {
   height: auto;
 }
 .tabs-after-product-slide-partial-a712ee .the-widget .description p {
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   color: #000000;
   font-weight: 400;
 }
@@ -1837,7 +1857,7 @@ html, body {
   margin-bottom: 0;
 }
 .products-slide-partial-3a813f .top-content .texts p {
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   color: #000000;
   margin-bottom: 0;
 }
@@ -2023,7 +2043,6 @@ html, body {
     width: 48%;
   }
   .products-slide-partial-3a813f .product-list .woocommerce .image-contain span {
-    font-size: 12px;
     left: 5%;
     transform: translateX(-5%);
   }
@@ -2053,14 +2072,14 @@ html, body {
   padding: 7px 1.3rem;
   color: #D9C2B6;
   border-radius: 25px;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   font-weight: 400;
   border: 1px solid #000000;
   transition: 0.2s;
 }
 @media (max-width: 500px) {
   .the-newest-partial-67ef94 .col-12 .main-cta {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 .the-newest-partial-67ef94 .col-12 .main-cta:hover {
@@ -2095,7 +2114,7 @@ html, body {
 .the-newest-partial-67ef94 .banner-contain .banner-texts h3 {
   background: #ffffff;
   color: #000000;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   font-weight: 700;
   padding: 2px 10px;
 }
@@ -2103,7 +2122,6 @@ html, body {
   background: #ffffff;
   color: #000000;
   padding: 2px 10px;
-  font-size: 16px;
   margin-bottom: 9px;
 }
 .the-newest-partial-67ef94 .banner-contain .banner-texts a {
@@ -2122,7 +2140,7 @@ html, body {
 }
 .the-newest-partial-67ef94 .banner-contain .banner-texts a span {
   font-weight: 400;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
 }
 .the-newest-partial-67ef94 .banner-contain .banner-texts a svg {
   width: 17px;
@@ -2137,7 +2155,7 @@ html, body {
 }
 @media (max-width: 500px) {
   .the-newest-partial-67ef94 .banner-contain .banner-texts a span {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
   .the-newest-partial-67ef94 .banner-contain .banner-texts a svg {
     width: 14px;
@@ -2220,7 +2238,7 @@ html, body {
     width: 100%;
   }
   .product-banner-partial-998797 .banner-item a .text-and-cta .product-name {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 @media screen and (min-width: 511px) and (max-width: 768px) {
@@ -2228,7 +2246,7 @@ html, body {
     max-width: calc(8rem + 3.6vw);
   }
   .product-banner-partial-998797 .banner-item a .text-and-cta .product-name {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 
@@ -2253,14 +2271,14 @@ html, body {
   padding: 7px 1.3rem;
   color: #D9C2B6;
   border-radius: 25px;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   font-weight: 400;
   border: 1px solid #000000;
   transition: 0.2s;
 }
 @media (max-width: 500px) {
   .about-us-partial-f404e5 a {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 .about-us-partial-f404e5 a:hover {
@@ -2348,7 +2366,7 @@ html, body {
 .banner-partial-0ed400 .nav-category li a span {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
 }
 .banner-partial-0ed400 .nav-category li a svg {
   width: 17px;
@@ -2363,7 +2381,7 @@ html, body {
 }
 @media (max-width: 500px) {
   .banner-partial-0ed400 .nav-category li a span {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
   .banner-partial-0ed400 .nav-category li a svg {
     width: 14px;
@@ -3059,22 +3077,22 @@ html, body {
 #wishlist-template-613c27 .the-content .shop_table thead tr th {
   background: transparent;
   border: none;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
 }
 @media (max-width: 768px) {
   #wishlist-template-613c27 .the-content .shop_table thead tr th {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 #wishlist-template-613c27 .the-content .shop_table tbody tr td {
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
 }
 #wishlist-template-613c27 .the-content .shop_table tbody tr td a {
   color: #000000;
 }
 @media (max-width: 768px) {
   #wishlist-template-613c27 .the-content .shop_table tbody tr td {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 #wishlist-template-613c27 .the-content .shop_table tbody tr .product-stock-status, #wishlist-template-613c27 .the-content .shop_table tbody tr .product-add-to-cart {
@@ -3218,7 +3236,7 @@ html, body {
   margin-bottom: 0;
 }
 .single-product-template-134541 .product-details .description-content .description {
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   color: #000000;
   font-weight: 400;
 }
@@ -3253,7 +3271,7 @@ html, body {
   color: #000000;
 }
 .single-product-template-134541 .content-product-sticky .price {
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   font-weight: 700;
   color: #000000;
   margin-bottom: 8px;
@@ -3580,7 +3598,7 @@ html, body {
   margin-bottom: 0;
 }
 .single-product-template-134541 .related-product .top-content .texts p {
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
   color: #000000;
   margin-bottom: 0;
 }
@@ -3779,7 +3797,7 @@ html, body {
   color: #000000;
   text-decoration: none;
   font-weight: 600;
-  font-size: calc(0.4rem + 1vw);
+  font-size: 1.0416666667vw;
 }
 @media (max-width: 768px) {
   #archive-product-template-7680ef #poduct-list .woocommerce p a {
@@ -3793,7 +3811,7 @@ html, body {
 }
 @media (max-width: 768px) {
   #archive-product-template-7680ef #poduct-list .woocommerce .woocommerce-cart-form table thead tr th {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 #archive-product-template-7680ef #poduct-list .woocommerce .woocommerce-cart-form table tbody tr td a {
@@ -3811,7 +3829,7 @@ html, body {
 }
 @media (max-width: 768px) {
   #archive-product-template-7680ef #poduct-list .woocommerce .woocommerce-cart-form table tbody tr td p {
-    font-size: calc(0.7rem + 1vw);
+    font-size: 4.1666666667vw;
   }
 }
 #archive-product-template-7680ef #poduct-list .woocommerce .woocommerce-cart-form table tbody tr td .add_to_cart_button {
