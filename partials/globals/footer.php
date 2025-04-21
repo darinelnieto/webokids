@@ -11,10 +11,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 $form = get_field('form_shortcode', 'option');
 $instagram_link = get_field('instagram', 'option');
 $favicon = get_field('favicon', 'option');
+$instagram = get_field('shortcode_instagram', 'option');
+$instagram_cta = get_field('cta_instagram', 'option');
 ?>
 <section class="footer-partial-baccbf">
     <div class="intagram-content">
-
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2><?= get_field('instagram_title', 'option'); ?></h2>
+                    <?php if($instagram_cta): ?>
+                        <a href="<?= $instagram_cta['url']; ?>" target="<?= $instagram_cta['target']; ?>" class="instagram-cta d-flex d-md-none">
+                            <span class="text"><?= $instagram_cta['title']; ?></span>
+                            <span class="icon-suscribe"><i class="fa-regular fa-heart"></i></span>
+                        </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+        <?= do_shortcode($instagram); ?>
     </div>
     <div class="footer-content">
         <div class="container">
