@@ -25,6 +25,17 @@ if ( ! defined( 'ABSPATH' ) ) {
     const _dittoURI_ = "<?= get_template_directory_uri() ?>",
           _dittoURL_ = "<?= get_site_url() ?>";
   </script>
+  <script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
+  <script>
+      // Version: 2.0
+      window.Brevo = window.Brevo || [];
+      Brevo.push([
+          "init",
+          {
+          client_key: "2r8ug5rd5gxgmudeokxxmbri"
+          }
+      ]);
+  </script>
 </head>
 
 <body <?php body_class(); ?>>
