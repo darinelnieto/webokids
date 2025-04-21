@@ -15,6 +15,8 @@
         padding: 10px 0;
         /*========== logo ==========*/
         .custom-logo-link{
+            position: relative;
+            z-index: 30;
             img{
                 width: 100%;
                 max-width: 100px;
@@ -48,7 +50,7 @@
                 width:100%;
                 height: 100vh;
                 left: -200%;
-                top: 16%;
+                top: 12%;
                 background: $beige_light;
                 ul{
                     flex-direction: column;
