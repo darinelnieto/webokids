@@ -148,6 +148,10 @@ html, body {
   padding: 0 !important;
 }
 
+body.sib-popup {
+  background-color: transparent !important;
+}
+
 .about-partial-82f4b8 {
   padding: 5.2083333333vw 0;
 }
