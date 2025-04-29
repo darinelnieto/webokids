@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <div class="row">
                 <div class="col-12" style="position:relative;">
                     <p class="message"><?= get_field('shipping_message', 'option'); ?></p>
-                    <div class="nav-login">
+                    <div class="nav-login d-none d-md-block">
                         <?php wp_nav_menu(['menu' => 'My Account']); ?>
                     </div>
                 </div>
@@ -29,7 +29,12 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <?= get_custom_logo(); ?>
                 </div>
                 <div class="col-6 nav-contain">
-                    <?php wp_nav_menu(['menu'=>'Main header']); ?>
+                    <div class="menu">
+                        <?php wp_nav_menu(['menu'=>'Main header']); ?>
+                    </div>
+                    <div class="nav-login d-blck d-md-none">
+                        <?php wp_nav_menu(['menu' => 'My Account']); ?>
+                    </div>
                 </div>
                 <div class="col-5 col-sm-4 col-lg-3 menu-bar-contain">
                     <div class="ctas-contain">

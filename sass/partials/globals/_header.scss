@@ -10,39 +10,59 @@
             font-weight: 300;
             margin-bottom: 0;
         }
-        .nav-login{
-            position: absolute;
-            top: 50%;
-            right: scaleVW(15, 1920);
-            transform: translateY(-50%);
-            ul{
-                display: flex;
-                align-items: center;
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                gap: scaleVW(36, 1920);
-                li{
-                    position: relative;
-                    &::after{
-                        content: '';
-                        width: 2px;
-                        height: scaleVW(18, 1920);
-                        background: $black;
-                        position: absolute;
-                        right: scaleVW(-18, 1920);
-                        top: 50%;
-                        transform: translateY(-50%);
-                    }
-                    a{
-                        text-decoration: none;
-                        color: $black;
-                        font-size: scaleVW(21, 1920);
-                    }
+    }
+    .nav-login{
+        position: absolute;
+        top: 50%;
+        right: scaleVW(15, 1920);
+        transform: translateY(-50%);
+        ul{
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: scaleVW(36, 1920);
+            li{
+                position: relative;
+                &::after{
+                    content: '';
+                    width: 2px;
+                    height: scaleVW(18, 1920);
+                    background: $black;
+                    position: absolute;
+                    right: scaleVW(-18, 1920);
+                    top: 50%;
+                    transform: translateY(-50%);
                 }
-                li:last-child{
+                a{
+                    text-decoration: none;
+                    color: $black;
+                    font-size: scaleVW(21, 1920);
+                }
+            }
+            li:last-child{
+                &::after{
+                    display: none;
+                }
+            }
+        }
+        @media(max-width:768px){
+            position: relative;
+            top: 3%;
+            right: inherit;
+            transform: none;
+            ul{
+                flex-direction: row;
+                justify-content: left;
+                gap: 20px;
+                li{
                     &::after{
                         display: none;
+                    }
+                    a{
+                        font-size: 1.1rem;
+                        font-weight: 300;
                     }
                 }
             }
@@ -63,20 +83,22 @@
         }
         /*========== Nav ===========*/
         .nav-contain{
-            ul{
-                display: flex;
-                align-items: center;
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                gap: 20px;
-                justify-content: center;
-                li{
-                    a{
-                        text-decoration: none;
-                        font-weight: 300;
-                        font-size: 1.1rem;
-                        color: $black;
+            .menu{
+                ul{
+                    display: flex;
+                    align-items: center;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    gap: 20px;
+                    justify-content: center;
+                    li{
+                        a{
+                            text-decoration: none;
+                            font-weight: 300;
+                            font-size: 1.1rem;
+                            color: $black;
+                        }
                     }
                 }
             }
@@ -90,9 +112,11 @@
                 left: -200%;
                 top: 12%;
                 background: $beige_light;
-                ul{
-                    flex-direction: column;
-                    align-items: flex-start;
+                .menu{
+                    ul{
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
                 }
             }
             .nav-contain.active{

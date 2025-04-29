@@ -148,10 +148,6 @@ html, body {
   padding: 0 !important;
 }
 
-body.sib-popup {
-  background-color: transparent !important;
-}
-
 .about-partial-82f4b8 {
   padding: 5.2083333333vw 0;
 }
@@ -2804,13 +2800,13 @@ body.sib-popup {
   font-weight: 300;
   margin-bottom: 0;
 }
-.header-partial-7cbee3 .beige-top .nav-login {
+.header-partial-7cbee3 .nav-login {
   position: absolute;
   top: 50%;
   right: 0.78125vw;
   transform: translateY(-50%);
 }
-.header-partial-7cbee3 .beige-top .nav-login ul {
+.header-partial-7cbee3 .nav-login ul {
   display: flex;
   align-items: center;
   list-style: none;
@@ -2818,10 +2814,10 @@ body.sib-popup {
   margin: 0;
   gap: 1.875vw;
 }
-.header-partial-7cbee3 .beige-top .nav-login ul li {
+.header-partial-7cbee3 .nav-login ul li {
   position: relative;
 }
-.header-partial-7cbee3 .beige-top .nav-login ul li::after {
+.header-partial-7cbee3 .nav-login ul li::after {
   content: "";
   width: 2px;
   height: 0.9375vw;
@@ -2831,13 +2827,33 @@ body.sib-popup {
   top: 50%;
   transform: translateY(-50%);
 }
-.header-partial-7cbee3 .beige-top .nav-login ul li a {
+.header-partial-7cbee3 .nav-login ul li a {
   text-decoration: none;
   color: #000000;
   font-size: 1.09375vw;
 }
-.header-partial-7cbee3 .beige-top .nav-login ul li:last-child::after {
+.header-partial-7cbee3 .nav-login ul li:last-child::after {
   display: none;
+}
+@media (max-width: 768px) {
+  .header-partial-7cbee3 .nav-login {
+    position: relative;
+    top: 3%;
+    right: inherit;
+    transform: none;
+  }
+  .header-partial-7cbee3 .nav-login ul {
+    flex-direction: row;
+    justify-content: left;
+    gap: 20px;
+  }
+  .header-partial-7cbee3 .nav-login ul li::after {
+    display: none;
+  }
+  .header-partial-7cbee3 .nav-login ul li a {
+    font-size: 1.1rem;
+    font-weight: 300;
+  }
 }
 .header-partial-7cbee3 .header-contain {
   background: #F9F6F5;
@@ -2855,7 +2871,7 @@ body.sib-popup {
   max-width: 100px;
   height: auto;
 }
-.header-partial-7cbee3 .header-contain .nav-contain ul {
+.header-partial-7cbee3 .header-contain .nav-contain .menu ul {
   display: flex;
   align-items: center;
   list-style: none;
@@ -2864,7 +2880,7 @@ body.sib-popup {
   gap: 20px;
   justify-content: center;
 }
-.header-partial-7cbee3 .header-contain .nav-contain ul li a {
+.header-partial-7cbee3 .header-contain .nav-contain .menu ul li a {
   text-decoration: none;
   font-weight: 300;
   font-size: 1.1rem;
@@ -2880,7 +2896,7 @@ body.sib-popup {
     top: 12%;
     background: #F9F6F5;
   }
-  .header-partial-7cbee3 .header-contain .nav-contain ul {
+  .header-partial-7cbee3 .header-contain .nav-contain .menu ul {
     flex-direction: column;
     align-items: flex-start;
   }
