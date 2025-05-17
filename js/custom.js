@@ -158,3 +158,22 @@ $('.tab-contoller').on('click', 'a', function(e){
     $('.body-tab .'+tab).addClass('active');
     e.preventDefault();
 });
+/*================ Slide generic banner ================*/
+$('.galleries').owlCarousel({
+    autoplay:false,
+    loop:false,
+    nav:false,
+    dots:false,
+    margin:0,
+    responsive:{
+        0:{
+            items:1
+        },
+        640:{
+            items:2
+        },
+        991:{
+            items:3
+        }
+    }
+}).css({'opacity':1});
