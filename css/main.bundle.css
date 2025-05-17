@@ -536,11 +536,11 @@ html, body {
   height: auto;
   color: #D9C2B6;
 }
-.contact-partial-a7f8d8 #contact-contain .form-content .form .submit p .button:hover .text {
+.contact-partial-a7f8d8 #contact-contain .form-content .form .submit p .button:hover .text-button {
   background: #D9C2B6;
   color: #000000;
 }
-.contact-partial-a7f8d8 #contact-contain .form-content .form .submit p .button:hover .text::before {
+.contact-partial-a7f8d8 #contact-contain .form-content .form .submit p .button:hover .text-button::before {
   background: #D9C2B6;
 }
 .contact-partial-a7f8d8 #contact-contain .form-content .form .submit p .button:hover .svg {
