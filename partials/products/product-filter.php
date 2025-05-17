@@ -37,7 +37,7 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                         </svg>
                     </span>
                 </div>
-                <div class="the-filter">
+                <div class="the-filter"> 
                     <ul>
                         <?php foreach($cat as $item): ?>
                         <li>
@@ -112,7 +112,6 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                         <?php foreach($size as $item): ?>
                         <li>
                             <a href="<?= $item->slug; ?>" class="this-size">
-                                <span class="checkbox"></span>
                                 <span class="name"><?= $item->name; ?></span>
                             </a>
                         </li>

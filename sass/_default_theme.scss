@@ -159,3 +159,8 @@ html, body{
         }
     }
 }
+.wcspc-area.wcspc-effect-01.wcspc-area-show{
+    @media(max-width:400px){
+        transform: translate3d(-300px, 0, 0) !important;
+    }
+}
