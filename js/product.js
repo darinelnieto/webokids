@@ -7,6 +7,16 @@ $(()=>{
         }
     });
 });
+/*============= Reset filter ==============*/
+$('.reset-filter').on('click', ()=>{
+    $('.this-cat').removeClass('active');
+    $('.this-color').removeClass('active');
+    $('.this-size').removeClass('active');
+    get_by_category();
+    get_by_color();
+    get_by_size();
+    get_products();
+});
 /*============== Filter by category ==============*/
 $('.by-category').on('click', '.filter-name', function(){
     $(this).parent().toggleClass('active');
