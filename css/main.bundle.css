@@ -2984,7 +2984,7 @@ html, body {
 }
 @media (max-width: 768px) {
   #sales-template-cc2c74 .count-down {
-    min-height: 43vh;
+    min-height: 29vh;
   }
 }
 #sales-template-cc2c74 .count-down::before {
