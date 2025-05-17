@@ -76,7 +76,7 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                         <?php foreach($color as $item): $image = get_term_meta($item->term_id, 'image', true); $image_id = wpm_translate_string($image); $image_url = wp_get_attachment_url($image_id); ?>
                         <li>
                             <a href="<?= $item->slug; ?>" class="this-color">
-                                <span class="color" style="background-image:url(<?= $image_url; ?>)"></span>
+                                <span class="color" style="<?php if(get_term_meta($item->term_id, 'enable_image_color', true)): ?>background-image:url(<?= $image_url; ?>);<?php else: ?>background:<?php echo get_term_meta($item->term_id, 'color_picker', true); endif; ?>"></span>
                                 <span class="name"><?= $item->name; ?></span>
                             </a>
                         </li>
