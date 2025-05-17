@@ -310,49 +310,30 @@
                     ul{
                         list-style: none;
                         padding: 0;
-                        margin: 0;
                         display: flex;
-                        flex-direction: column;
-                        gap: 8px;
+                        flex-wrap: wrap;
+                        gap: 5px;
+                        margin-bottom: 7px;
                         li{
-                            a{
+                            width: 31.33%;
+                            a{ 
                                 display: flex;
                                 width: 100%;
-                                text-decoration: none;
+                                justify-content: center;
                                 align-items: center;
-                                gap: 10px;
-                                .checkbox{
-                                    display: block;
-                                    width: 15px;
-                                    height: 15px;
-                                    border: 1px solid $black;
-                                    border-radius: 4px;
-                                    position: relative;
-                                    &::before{
-                                        visibility: hidden;
-                                        content: '';
-                                        width: 13px;
-                                        height: 6px;
-                                        position: absolute;
-                                        top: 50%;
-                                        left: 50%;
-                                        transform: translate(-50%, -50%) rotate(-45deg);
-                                        border-bottom: 2px solid;
-                                        border-left: 2px solid;
-                                        border-color: $black;
-                                        transition: .2s;
-                                    }
-                                }
+                                text-decoration: none;
+                                border: 1px solid $black;
+                                padding: 4px 0;
                                 .name{
                                     font-size: 16px;
                                     color: $black;
+                                    font-weight: 400;
                                 }
                             }
                             a.active{
-                                .checkbox{
-                                    &::before{
-                                        visibility: visible;
-                                    }
+                                background: $black;
+                                .name{
+                                    color: $marron;
                                 }
                             }
                         }
