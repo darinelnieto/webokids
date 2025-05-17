@@ -1497,6 +1497,9 @@ html, body {
   gap: 8px;
   align-items: center;
 }
+.product-filter-partial-b72424 .filter .by-color .the-filter ul li {
+  width: 50%;
+}
 .product-filter-partial-b72424 .filter .by-color .the-filter ul li .this-color {
   display: flex;
   flex-direction: column;
