@@ -2364,6 +2364,7 @@ html, body {
   border-radius: 50%;
   position: relative;
   transition: 0.2s;
+  background: rgba(255, 255, 255, 0.5);
 }
 .banner-partial-0ed400 .banner-slide .owl-nav .owl-prev span::before {
   content: "";
@@ -2387,6 +2388,7 @@ html, body {
   border-radius: 50%;
   position: relative;
   transition: 0.2s;
+  background: rgba(255, 255, 255, 0.5);
 }
 .banner-partial-0ed400 .banner-slide .owl-nav .owl-next span::before {
   content: "";
