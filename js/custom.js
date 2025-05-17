@@ -160,14 +160,14 @@ $('.tab-contoller').on('click', 'a', function(e){
 });
 /*================ Slide generic banner ================*/
 $('.galleries').owlCarousel({
-    autoplay:false,
-    loop:false,
+    autoplay:true,
+    loop:true,
     nav:false,
     dots:false,
     margin:0,
     responsive:{
         0:{
-            items:1
+            items:1,
         },
         640:{
             items:2
