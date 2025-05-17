@@ -4,6 +4,9 @@
         position: relative;
         margin-bottom: 3rem;
         min-height: 53vh;
+        @media(max-width:768px){
+            min-height: 43vh;
+        }
         &::before{
             content: '';
             width: 100%;
