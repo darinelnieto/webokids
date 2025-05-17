@@ -2253,7 +2253,7 @@ html, body {
 
 .about-us-partial-f404e5 {
   background: #ffffff;
-  padding: 90px 0;
+  padding: 60px 0;
 }
 .about-us-partial-f404e5 h1 {
   font-weight: 700;
@@ -2290,11 +2290,30 @@ html, body {
 .banner-partial-0ed400 {
   position: relative;
 }
-.banner-partial-0ed400 .banner-contain {
-  position: relative;
-  min-height: 70vh;
+.banner-partial-0ed400 .banner-slide {
+  opacity: 0;
+  transition: 0.4s;
 }
-.banner-partial-0ed400 .banner-contain .background-text {
+.banner-partial-0ed400 .banner-slide .owl-item {
+  height: 78vh;
+}
+@media (max-width: 799px) {
+  .banner-partial-0ed400 .banner-slide .owl-item {
+    height: 100vh;
+  }
+}
+.banner-partial-0ed400 .banner-slide .owl-item .item a {
+  text-decoration: none;
+  transition: 1s;
+}
+.banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  min-height: 70vh;
+  transition: 1s;
+}
+.banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain .background-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2303,18 +2322,7 @@ html, body {
   max-width: 600px;
   width: 100%;
 }
-.banner-partial-0ed400 .banner-contain #product-content a {
-  text-decoration: none;
-  transition: 1s;
-}
-.banner-partial-0ed400 .banner-contain #product-content a .product-image-contain {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  min-height: 70vh;
-  transition: 1s;
-}
-.banner-partial-0ed400 .banner-contain #product-content a .product-image-contain img {
+.banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain img {
   transition: 1s;
   width: 100%;
   max-width: 420px;
@@ -2326,20 +2334,73 @@ html, body {
   z-index: 2;
 }
 @media (max-width: 799px) {
-  .banner-partial-0ed400 .banner-contain {
+  .banner-partial-0ed400 .banner-slide .owl-item .item {
     min-height: 100vh;
   }
-  .banner-partial-0ed400 .banner-contain #product-content a .product-image-contain {
+  .banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain {
     min-height: 100vh;
   }
-  .banner-partial-0ed400 .banner-contain #product-content a .product-image-contain img {
+  .banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain img {
     transform: translate(-50%, -43%);
     top: 43%;
     max-width: 360px;
   }
 }
-.banner-partial-0ed400 .banner-slide {
-  opacity: 0;
+.banner-partial-0ed400 .banner-slide .owl-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 95%;
+}
+.banner-partial-0ed400 .banner-slide .owl-nav .owl-prev span {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.2s;
+}
+.banner-partial-0ed400 .banner-slide .owl-nav .owl-prev span::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-left: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%) rotate(40deg);
+}
+.banner-partial-0ed400 .banner-slide .owl-nav .owl-prev span:hover {
+  background: #ffffff;
+}
+.banner-partial-0ed400 .banner-slide .owl-nav .owl-next span {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #000000;
+  border-radius: 50%;
+  position: relative;
+  transition: 0.2s;
+}
+.banner-partial-0ed400 .banner-slide .owl-nav .owl-next span::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-left: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%) rotate(224deg);
+}
+.banner-partial-0ed400 .banner-slide .owl-nav .owl-next span:hover {
+  background: #ffffff;
 }
 .banner-partial-0ed400 .nav-category {
   list-style: none;
@@ -2347,9 +2408,9 @@ html, body {
   align-items: center;
   gap: 10px;
   position: absolute;
-  bottom: 0;
+  bottom: 13%;
   left: 2%;
-  transform: translate(-2%, -13%);
+  transform: translate(-2%, 0%);
   z-index: 3;
 }
 .banner-partial-0ed400 .nav-category li a {
@@ -2392,6 +2453,9 @@ html, body {
   .banner-partial-0ed400 .nav-category {
     flex-direction: column;
     align-items: normal;
+    bottom: 0%;
+    left: 0;
+    transform: translate(0%, -13%);
   }
   .banner-partial-0ed400 .nav-category li a {
     justify-content: space-between;
@@ -2401,12 +2465,15 @@ html, body {
   position: absolute;
   bottom: 0;
   right: 7%;
-  transform: translate(7%, 53%);
+  transform: translate(7%, 33%);
   max-width: 21vw;
+  z-index: 2;
 }
 @media (max-width: 768px) {
   .banner-partial-0ed400 .logo-bottom {
     max-width: 37vw;
+    right: 4%;
+    transform: translate(4%, 44%);
   }
 }
 

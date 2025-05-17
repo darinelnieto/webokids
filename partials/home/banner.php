@@ -15,17 +15,18 @@ $logo_bottom = get_field('logo_bottom');
 ?>
 <section class="banner-partial-0ed400">
     <div class="banner-contain">
-        <img src="<?= $background_text['url']; ?>" alt="<?= $background_text['title']; ?>" class="background-text">
         <div id="product-content"></div>
     </div>
     <?php if($products): ?>
         <div class="banner-slide owl-carousel">
             <?php foreach($products as $product): ?>
                 <div class="item">
-                    <input type="hidden" value="<?php if($product['background_image'] === true): ?>background-image:url(<?= $product['background_img']; ?>)<?php else: ?>background:<?php echo $product['color']; endif; ?>;" class="background-value">
-                    <input type="hidden" class="image-url" value="<?= $product['product_image']['url'] ?>">
-                    <input type="hidden" class="image-title" value="<?= $product['product_image']['title'] ?>">
-                    <input type="hidden" class="product-url" value="<?= $product['link']; ?>">
+                    <a href="<?= $product['link']; ?>">
+                        <div class="product-image-contain" style="<?php if($product['background_image'] === true): ?>background-image:url(<?= $product['background_img']; ?>)<?php else: ?>background:<?php echo $product['color']; endif; ?>;">
+                            <img src="<?= $background_text['url']; ?>" alt="<?= $background_text['title']; ?>" class="background-text">
+                            <img src="<?= $product['product_image']['url']; ?>" alt="<?= $product['product_image']['title']; ?>" class="product-image">
+                        </div>
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -59,31 +60,23 @@ $logo_bottom = get_field('logo_bottom');
             $('.banner-slide').owlCarousel({
                 autoplay:true,
                 loop:true,
-                nav:false,
+                nav:true,
+                navText:[
+                    `<span></span>`,
+                    `<span></span>`
+                ],
                 dots:false,
                 margin:0,
                 items:1,
-                onDragged: callback,
-            }).on('changed.owl.carousel', function() {
-                callback();
-            });
-            function callback(){
-                $('#product-content').html('');
-                var background = $('.banner-slide .owl-item.active .background-value').val();
-                var img_url = $('.banner-slide .owl-item.active .image-url').val();
-                var img_title = $('.banner-slide .owl-item.active .image-title').val();
-                var product_link = $('.banner-slide .owl-item.active .product-url').val();
-                $('#product-content').html(`
-                    <a href="${product_link}">
-                        <div class="product-image-contain" style="${background}">
-                            <img src="${img_url}" alt="${img_title}" class="product-image">
-                        </div>
-                    </a>
-                `);
-            }
-            $(()=>{
-                callback();
-            });
+                responsive:{
+                    0:{
+                        nav:false,
+                    },
+                    768:{
+                        nav:true
+                    }
+                }
+            }).css({'opacity':1});
         </script>
     <?php endif; ?>
 </section>
