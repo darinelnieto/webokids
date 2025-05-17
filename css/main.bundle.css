@@ -3106,6 +3106,7 @@ html, body {
   margin-bottom: 9px;
   display: block;
   width: fit-content;
+  max-width: 300px;
 }
 #sales-template-cc2c74 .closed-off .container a {
   display: flex;
