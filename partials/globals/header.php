@@ -8,6 +8,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly.
 }
+$social_networks = get_field('social_networks', 'option');
 ?>
 <section class="header-partial-7cbee3">
     <div class="beige-top">
@@ -75,5 +76,15 @@ if ( ! defined( 'ABSPATH' ) ) {
             </div>
         </div>
     </div>
-</section>
-                    
+    <?php if($social_networks): ?>
+        <ul class="social-networks">
+            <?php foreach($social_networks as $item): ?>
+                <li>
+                    <a href="<?= $item['link']['url'] ?>" target="<?= $item['link']['target']; ?>">
+                        <?= $item['icon']; ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</section>       

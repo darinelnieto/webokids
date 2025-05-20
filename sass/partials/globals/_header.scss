@@ -198,4 +198,48 @@
             }
         }
     }
+    /*============== Social Networks ==============*/
+    .social-networks{
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        gap: scaleVW(13.49, 1920);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        right: scaleVW(21.45, 1920);
+        top: scaleVW(185.2145, 1920);
+        z-index: 100;
+        li{
+            a{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: scaleVW(82.65, 1920);
+                height: scaleVW(82.65, 1920);
+                font-size: scaleVW(47.26, 1920);
+                text-decoration: none;
+                background: $red;
+                border-radius: 50%;
+                color: $marron;
+                border: 1px solid $red;
+                transition: .2s;
+                &:hover{
+                    background: $black;
+                }
+            }
+        }
+        @media(max-width:768px){
+            gap: scaleVW(13.49, 532);
+            right: scaleVW(21.45, 532);
+            top: scaleVW(159.314, 532);
+            li{
+                a{
+                    width: scaleVW(40.9868, 532);
+                    height: scaleVW(40.9868, 532);
+                    font-size: scaleVW(20.9804, 532);
+                }
+            }
+        }
+    }
 }
