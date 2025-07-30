@@ -44,8 +44,7 @@ $shipping_details = get_field('shipping_details', 'option');
 					<a href="<?= $featured_image; ?>" class="zoom-trigger">
 						<img src="<?= $featured_image; ?>" alt="" class="zoom-image">
 					</a>
-					<?php 
-						foreach ($attachment_ids as $attachment_id): $key++; $image_url = wp_get_attachment_image_src($attachment_id, 'full'); ?>
+					<?php foreach ($attachment_ids as $attachment_id): $key++; $image_url = wp_get_attachment_image_src($attachment_id, 'full'); ?>
 						<a href="<?= $image_url[0]; ?>" class="zoom-trigger <?php if($key > 3 && !wp_is_mobile()): ?>this-hidden d-none<?php endif; ?>">
 							<img src="<?= $image_url[0]; ?>" alt="" class="zoom-image">
 						</a>
