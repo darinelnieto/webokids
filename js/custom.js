@@ -177,3 +177,38 @@ $('.galleries').owlCarousel({
         }
     }
 }).css({'opacity':1});
+// Suscription form
+$('.footer-content form').on('submit', function(e){
+    var email = $('.wpcf7-email', this).val();
+    submitData(email);
+});
+
+function submitData(value){
+  fetch("https://api.hsforms.com/submissions/v3/integration/submit/49847598/b6485c2d-bcc0-485d-ae1e-c3feec6faac6", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      fields: [
+        {
+          name: "email",
+          value: value
+        },
+        { 
+            name: "acepto_tratamiento_de_datos_personales_conforme_a_la_siguiente_solicitud_de_autorizacion_", 
+            value: "true"
+        }
+      ],
+      context: {
+        pageUri: window.location.href,
+        pageName: document.title
+      }
+    })
+  })
+  .then(async response => {
+    console.log(response.status);
+    console.log(await response.text());
+  })
+  .catch(error => console.error('Error:', error));
+}
