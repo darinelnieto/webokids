@@ -15,9 +15,13 @@ function ditto_scripts() {
   wp_enqueue_style('owl-carousel.css', get_template_directory_uri() . '/css/owl.carousel.min.css');
 
   wp_enqueue_script( 'main-scripts', get_template_directory_uri() . '/js/main.bundle.js', array( 'jquery' ), '', true );
-  wp_enqueue_script('jquery.js', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', true);
-  wp_enqueue_script('bootstrap.js',  get_template_directory_uri() . '/js/bootstrap.min.js');
-  wp_enqueue_script('owl-carousel.js', get_template_directory_uri() . '/js/owl.carousel.min.js');
+  // Se usa el jQuery de WordPress. El jquery-3.5.1 propio del tema reemplazaba al de WP,
+  // borraba blockUI y rompía el checkout.js de WooCommerce (no se recalculaba el envío).
+  // Los scripts del tema usan $ global, así que se expone el jQuery de WP como $.
+  wp_enqueue_script('jquery');
+  wp_add_inline_script('jquery-core', 'window.$ = window.jQuery;');
+  wp_enqueue_script('bootstrap.js',  get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ));
+  wp_enqueue_script('owl-carousel.js', get_template_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ));
   wp_enqueue_script('font-awesome.js', get_template_directory_uri() . '/js/font-awesome.js');
   wp_register_script('custom.js', get_template_directory_uri() . '/js/custom.js', array('jquery'), '1', true);
   wp_enqueue_script('zoom-js', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-zoom/1.7.21/jquery.zoom.min.js', array('jquery'), null, true);
