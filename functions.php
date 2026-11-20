@@ -117,26 +117,6 @@ function webokids_enqueue_single_product_js() {
 }
 
 /**
- * Cloudflare Turnstile (anti-spam de Contact Form 7): CF7 lo carga en todas las páginas
- * porque el formulario del footer está en todo el sitio. Se quita de la carga inicial y
- * js/partials/custom.js (initLazyTurnstile) lo descarga cuando el formulario se acerca
- * a la pantalla o se hace foco en él. Evita su JS y los errores de CSP que genera su
- * iframe en la consola (penalizan en PageSpeed > Prácticas recomendadas).
- */
-function webokids_lazy_turnstile() {
-  if ( ! wp_script_is( 'cloudflare-turnstile', 'enqueued' ) ) {
-    return;
-  }
-  $src = wp_scripts()->registered['cloudflare-turnstile']->src ?? '';
-  if ( ! $src ) {
-    return;
-  }
-  wp_dequeue_script( 'cloudflare-turnstile' );
-  wp_add_inline_script( 'webokids-custom', 'window.webokidsTurnstile = ' . wp_json_encode( array( 'src' => $src ) ) . ';', 'before' );
-}
-add_action( 'wp_enqueue_scripts', 'webokids_lazy_turnstile', 20 );
-
-/**
  * Encola los carruseles (Owl) desde los partials que los usan.
  */
 function webokids_enqueue_carousels() {

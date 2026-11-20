@@ -244,60 +244,8 @@
         });
     }
 
-    /*============= Cloudflare Turnstile diferido (Contact Form 7) =============*/
-    // functions.php quita el script de la carga inicial y deja su URL en window.webokidsTurnstile.
-    // Se descarga cuando un formulario con Turnstile se acerca a la pantalla o al hacer foco en él,
-    // con margen para que el token esté listo antes de enviar.
-    function initLazyTurnstile() {
-        var config = window.webokidsTurnstile;
-        if (!config || !config.src || !exists('.cf-turnstile')) return;
-
-        var loaded = false;
-        var observer = null;
-
-        function load() {
-            if (loaded) return;
-            loaded = true;
-            if (observer) observer.disconnect();
-            var script = document.createElement('script');
-            script.src = config.src;
-            script.async = true;
-            document.head.appendChild(script);
-        }
-
-        if ('IntersectionObserver' in window) {
-            observer = new IntersectionObserver(function (entries) {
-                for (var i = 0; i < entries.length; i++) {
-                    if (entries[i].isIntersecting) {
-                        load();
-                        return;
-                    }
-                }
-            }, { rootMargin: '300px 0px' });
-            document.querySelectorAll('.cf-turnstile').forEach(function (widget) {
-                observer.observe(widget.closest('form') || widget);
-            });
-        } else {
-            load();
-        }
-
-        document.addEventListener('focusin', function (e) {
-            if (e.target && e.target.closest && e.target.closest('.wpcf7-form')) {
-                load();
-            }
-        });
-
-        // Lo que hacía el inline de CF7: un token nuevo después de cada envío.
-        document.addEventListener('wpcf7submit', function () {
-            if (window.turnstile) {
-                window.turnstile.reset();
-            }
-        });
-    }
-
     $(function () {
         initKeyboardButtons();
-        initLazyTurnstile();
         initMobileMenu();
         initStickyHeader();
         initPoliciesCheckbox();
