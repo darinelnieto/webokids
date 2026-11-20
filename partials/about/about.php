@@ -23,8 +23,12 @@ $about = get_field('about');
             <?php endif; ?>
         </div>
     </div>
-    <?php if($about['image']): ?>
-        <img src="<?= $about['image']['url'] ?>" alt="<?= $about['image']['title'] ?>" width="<?= $about['image']['width']; ?>" height="<?= $about['image']['height'] ?>" class="about-image">
-    <?php endif; ?>
+    <?= wp_get_attachment_image($about['image']['ID'] ?? '', 'large', false, array(
+        'class' => 'about-image',
+        'loading' => 'eager',
+        'fetchpriority' => 'high',
+        'decoding' => 'async',
+        'alt' => 'Webo image'
+    )) ?>
 </section>
                     

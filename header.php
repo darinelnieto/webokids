@@ -13,18 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 <html class="no-js" <?php language_attributes(); ?>>
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title><?php wp_title('|', true, 'right'); ?> <?php bloginfo('name'); ?></title>
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <meta name="viewport" content="width=device-width">
+  <meta charset="<?php bloginfo('charset'); ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
   <?php wp_head(); ?>
-  <script>
-    const _dittoURI_ = "<?= get_template_directory_uri() ?>",
-          _dittoURL_ = "<?= get_site_url() ?>";
-  </script>
   <script src="https://cdn.brevo.com/js/sdk-loader.js" async></script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

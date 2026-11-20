@@ -27,9 +27,27 @@ $social_networks = get_field('social_networks', 'option');
         <div class="container">
             <div class="row align-items-center justify-content-between">
                 <div class="col-4 col-md-3">
-                    <?= get_custom_logo(); ?>
+                    <?php
+                        // Logo: mismo marcado que get_custom_logo() (a.custom-logo-link > img.custom-logo),
+                        // pero con prioridad alta porque está en la parte visible al cargar.
+                        $logo_id   = get_theme_mod('custom_logo');
+                        $site_name = get_bloginfo('name', 'display');
+                    ?>
+                    <a href="<?= esc_url(home_url('/')); ?>" class="custom-logo-link" rel="home"<?php if (is_front_page()): ?> aria-current="page"<?php endif; ?> aria-label="<?= esc_attr($site_name . ' - ' . webokids_t('Home', 'Inicio')); ?>">
+                        <?php if ($logo_id): ?>
+                            <?= wp_get_attachment_image($logo_id, 'full', false, array(
+                                'class'         => 'custom-logo',
+                                'alt'           => $site_name,
+                                'loading'       => 'eager',
+                                'fetchpriority' => 'high',
+                                'decoding'      => 'async',
+                            )); ?>
+                        <?php else: ?>
+                            <span class="site-name"><?= esc_html($site_name); ?></span>
+                        <?php endif; ?>
+                    </a>
                 </div>
-                <div class="col-6 nav-contain">
+                <div class="col-6 nav-contain" id="main-navigation">
                     <div class="menu">
                         <?php wp_nav_menu(['menu'=>'Main header']); ?>
                     </div>
@@ -40,8 +58,8 @@ $social_networks = get_field('social_networks', 'option');
                 <div class="col-5 col-sm-4 col-lg-3 menu-bar-contain">
                     <div class="ctas-contain">
                         <div class="wishlist-cta">
-                            <a href="<?= home_url(); ?>/wishlist/">
-                                <svg id="Grupo_28" data-name="Grupo 28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33.961" height="29.528" viewBox="0 0 33.961 29.528">
+                            <a href="<?= esc_url(home_url('/wishlist/')); ?>" aria-label="<?= esc_attr(webokids_t('Wishlist', 'Lista de deseos')); ?>" title="<?= esc_attr(webokids_t('Wishlist', 'Lista de deseos')); ?>">
+                                <svg aria-hidden="true" focusable="false" id="Grupo_28" data-name="Grupo 28" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33.961" height="29.528" viewBox="0 0 33.961 29.528">
                                     <defs>
                                         <clipPath id="clip-path">
                                         <rect id="Rectángulo_27" data-name="Rectángulo 27" width="33.961" height="29.528" fill="none"/>
@@ -53,8 +71,8 @@ $social_networks = get_field('social_networks', 'option');
                                 </svg>
                             </a>
                         </div>
-                        <div id="wcspc-count" class="wcspc-count wcspc-count-bottom-left car-header">
-                            <svg id="Grupo_23" data-name="Grupo 23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.636" height="29.528" viewBox="0 0 23.636 29.528">
+                        <div id="wcspc-count" class="wcspc-count wcspc-count-bottom-left car-header" role="button" tabindex="0" aria-label="<?= esc_attr(webokids_t('Open cart', 'Ver carrito')); ?>" title="<?= esc_attr(webokids_t('Cart', 'Carrito')); ?>">
+                            <svg aria-hidden="true" focusable="false" id="Grupo_23" data-name="Grupo 23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.636" height="29.528" viewBox="0 0 23.636 29.528">
                                 <defs>
                                     <clipPath id="clip-path">
                                     <rect id="Rectángulo_24" data-name="Rectángulo 24" width="23.636" height="29.528" fill="none"/>
@@ -67,7 +85,7 @@ $social_networks = get_field('social_networks', 'option');
                             </svg>
                         </div>
                     </div>
-                    <div class="bar-menu d-block d-md-none">
+                    <div class="bar-menu d-block d-md-none" role="button" tabindex="0" aria-label="<?= esc_attr(webokids_t('Open menu', 'Abrir menú')); ?>" aria-controls="main-navigation" aria-expanded="false">
                         <span class="top"></span>
                         <span class="center"></span>
                         <span class="bottom"></span>
@@ -80,8 +98,11 @@ $social_networks = get_field('social_networks', 'option');
         <ul class="social-networks">
             <?php foreach($social_networks as $item): ?>
                 <li>
-                    <a href="<?= $item['link']['url'] ?>" target="<?= $item['link']['target']; ?>">
-                        <?= $item['icon']; ?>
+                    <?php
+                        $social_label = $item['link']['title'] ?: wp_parse_url($item['link']['url'], PHP_URL_HOST);
+                    ?>
+                    <a href="<?= esc_url($item['link']['url']); ?>"<?= webokids_target_attrs($item['link']); ?> aria-label="<?= esc_attr('Webo ' . $social_label); ?>" title="<?= esc_attr($social_label); ?>">
+                        <?= webokids_replace_fa_icons($item['icon']); ?>
                     </a>
                 </li>
             <?php endforeach; ?>

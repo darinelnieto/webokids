@@ -2,6 +2,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './js/main.js',
+    externals: {
+        jquery: 'jQuery'
+    },
     output: {
         path: __dirname + '/js',
         filename: 'main.bundle.js'
@@ -13,7 +16,8 @@ module.exports = {
                 test: /\.scss$/,
                 loader: [
                     {loader: MiniCssExtractPlugin.loader},
-                    {loader: 'css-loader'},
+                    // url: false -> las fuentes quedan como archivos (../fonts/*) y no en base64 dentro del CSS.
+                    {loader: 'css-loader', options: {url: false}},
                     {loader: 'sass-loader'}
                 ]
             },

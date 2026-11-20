@@ -22,12 +22,12 @@ if($content['product_list']):
                     </div>
                     <div class="ctas">
                         <div class="see-all-contaian">
-                            <a href="<?= $content['see_all_products']; ?>">
+                            <a href="<?= esc_url($content['see_all_products']); ?>" aria-label="<?= esc_attr(webokids_t('See all products', 'Ver todos los productos')); ?>">
                                 <span class="text">
                                     <?php if(get_bloginfo("language") == "en-US"): ?>See all<?php else: ?>Ver todo<?php endif; ?>
                                 </span>
                                 <span class="svg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
+                                    <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
                                         <defs>
                                             <clipPath id="clip-path">
                                             <rect id="Rectángulo_42" data-name="Rectángulo 42" width="23.068" height="23.068" transform="translate(0 0)" fill="none"/>
@@ -47,12 +47,12 @@ if($content['product_list']):
                         <div class="nav-slide-products">
                             <ul>
                                 <li>
-                                    <a href="#" class="prev">
+                                    <a href="#" class="prev" role="button" aria-label="<?= esc_attr(webokids_t('Previous products', 'Productos anteriores')); ?>">
                                         <span></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="next">
+                                    <a href="#" class="next" role="button" aria-label="<?= esc_attr(webokids_t('Next products', 'Productos siguientes')); ?>">
                                         <span></span>
                                     </a>
                                 </li>
@@ -73,11 +73,9 @@ if($content['product_list']):
         </div>
     </div>
 </section>
-<script>
-    $(()=>{
-        $('.prev').addClass('disabled');
-    })
-    /*============ esto por si quiere que pase uno por uno ============
+<?php /* La navegación del slide se inicializa en js/partials/custom.js (initProductsSlideNav). */ ?>
+<?php /* Versión alternativa: pasar los productos uno por uno.
+    ============ esto por si quiere que pase uno por uno ============
     var scroll_left = 0;
     var items = 1;
     $('.nav-slide-products .next').on('click', function(e){
@@ -109,6 +107,6 @@ if($content['product_list']):
             $('.prev').addClass('disabled');
         }
     } 
-    ============== Hast aquí ==============*/
-</script>
+    ============== Hast aquí ==============
+*/ ?>
 <?php endif; ?>

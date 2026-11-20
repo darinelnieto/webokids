@@ -213,7 +213,8 @@
             border-radius: 20px;
         }
         .woocommerce{
-            width: 33.33%;
+            // 3 tarjetas exactas: el ancho descuenta los 2 gaps de 10px (antes 33.33% + gaps siempre desbordaba).
+            width: calc((100% - 20px) / 3);
         }
         @media(max-width:768px){
             display: flex;

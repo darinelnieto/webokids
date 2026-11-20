@@ -1,6 +1,9 @@
 #!/usr/bin/env php
 <?php
+// symfony/console 2.6 es antiguo y genera avisos Deprecated en PHP 8+.
+error_reporting(E_ALL & ~E_DEPRECATED);
 require __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/commands/make.php';
 
 use Symfony\Component\Console\Application;
 
@@ -9,6 +12,7 @@ $application = new Application();
 # Commands
 $application->add(new MakeTemplateCommand());
 $application->add(new MakePartialCommand());
+$application->add(new BuildPartialJsCommand());
 $application->add(new ThemeNameCommand());
 $application->add(new ThemeDescriptionCommand());
 $application->add(new ThemeVersionCommand());

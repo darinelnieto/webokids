@@ -15,7 +15,7 @@ $key = -1;
 <section class="banner-products-partial-d0c71c">
     <?php if(!wp_is_mobile()): ?>
     <div class="webo-svg">
-        <svg id="Grupo_8" data-name="Grupo 8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="225.846" height="299.051" viewBox="0 0 225.846 299.051">
+        <svg aria-hidden="true" focusable="false" id="Grupo_8" data-name="Grupo 8" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="225.846" height="299.051" viewBox="0 0 225.846 299.051">
             <defs>
                 <clipPath id="clip-path">
                 <rect id="Rectángulo_17" data-name="Rectángulo 17" width="225.846" height="299.051" fill="none"/>
@@ -33,12 +33,12 @@ $key = -1;
                 <div class="title <?php if(wp_is_mobile()): ?>title-and-filter<?php endif; ?>">
                     <h1><?= get_field('category_name'); ?></h1>
                     <?php if(wp_is_mobile()): ?>
-                        <button class="open-filter">
+                        <button type="button" class="open-filter" aria-controls="filter-movil" aria-expanded="false">
                             <span class="text">
                                 <?php if(get_bloginfo("language") == "en-US"): ?>Filter<?php else: ?>Filtrar<?php endif; ?>
                             </span>
                             <span class="svg">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30.13" height="24.124" viewBox="0 0 30.13 24.124">
+                                <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30.13" height="24.124" viewBox="0 0 30.13 24.124">
                                     <defs>
                                         <clipPath id="clip-path">
                                         <rect id="Rectángulo_19" data-name="Rectángulo 19" width="30.13" height="24.124" transform="translate(0 0)" fill="none"/>
@@ -58,7 +58,7 @@ $key = -1;
                 </div>
                 <!-- Filter movil -->
                 <?php if(wp_is_mobile()): ?>
-                    <div class="filter-movil d-none">
+                    <div class="filter-movil d-none" id="filter-movil" role="dialog" aria-label="<?= esc_attr(webokids_t('Product filter', 'Filtro de productos')); ?>">
                         <?php get_template_part('partials/products/product-filter-movil'); ?>
                     </div>
                 <?php endif; ?>
@@ -70,13 +70,17 @@ $key = -1;
                                 $key++; 
                                 if($key <= 2): 
                                 $thumbnail_id = get_term_meta($item->term_id, 'thumbnail_id', true); 
-                                $image_url = wp_get_attachment_image_url($thumbnail_id, 'full');
                             ?>
                                 <div class="col-2">
                                     <div class="the-category">
-                                        <a href="<?= home_url(); ?>/product-category/<?= $item->slug; ?>" style="background:<?= get_field('category_color', 'category_' . $item->term_id); ?>">
+                                        <a href="<?= esc_url(home_url('/product-category/' . $item->slug . '/')); ?>" style="background:<?= get_field('category_color', 'category_' . $item->term_id); ?>">
                                             <div class="img-contain">
-                                                <img src="<?=  $image_url; ?>" alt="<?= $item->name; ?>">
+                                                <?= wp_get_attachment_image($thumbnail_id ?: '', 'large', false, array(
+                                                    'loading' => 'eager',
+                                                    'fetchpriority' => 'high',
+                                                    'decoding' => 'async',
+                                                    'alt' => 'Webo categoría ' . $item->name
+                                                )) ?>
                                             </div>
                                             <p class="category-name"><?= $item->name; ?></p>
                                         </a>

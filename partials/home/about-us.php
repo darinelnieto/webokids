@@ -18,7 +18,7 @@ if($about_us['title'] && $about_us['description']):
                 <h1><?= $about_us['title']; ?></h1>
                 <p><?= $about_us['description']; ?></p>
                 <?php if($about_us['page_link']): ?>
-                    <a href="<?= $about_us['page_link']; ?>">
+                    <a href="<?= esc_url($about_us['page_link']); ?>">
                         <?= $about_us['cta_text']; ?>
                     </a>
                 <?php endif; ?>

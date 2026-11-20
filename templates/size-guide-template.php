@@ -33,7 +33,12 @@ $key_body = 0;
                     <?php if($guide_image && $guide_description): ?>
                         <div class="feature-image-and-description">
                             <div class="image-contain">
-                                <img src="<?= $guide_image['url']; ?>" alt="<?= $guide_image['title']; ?>">
+                                <?= wp_get_attachment_image($guide_image['ID'] ?? '', 'large', false, array(
+                                    'loading' => 'eager',
+                                    'fetchpriority' => 'high',
+                                    'decoding' => 'async',
+                                    'alt' => 'Webo guía de tallas'
+                                )) ?>
                             </div>
                             <div class="description">
                                 <p><?= $guide_description; ?></p>
@@ -41,10 +46,10 @@ $key_body = 0;
                         </div>
                     <?php endif; if($guide_tabs): ?>
                         <div class="tabs-contain">
-                            <ul class="tab-contoller">
+                            <ul class="tab-contoller" role="tablist">
                                 <?php foreach($guide_tabs as $tab): $key_controller++ ?>
-                                    <li class="the-tab <?php if($key_controller === 1): ?>active<?php endif; ?>">
-                                        <a href="item-<?= $key_controller; ?>" class="item">
+                                    <li class="the-tab <?php if($key_controller === 1): ?>active<?php endif; ?>" role="presentation">
+                                        <a href="#size-guide-item-<?= $key_controller; ?>" class="item" role="tab" id="size-guide-tab-<?= $key_controller; ?>" data-tab="item-<?= $key_controller; ?>" aria-controls="size-guide-item-<?= $key_controller; ?>" aria-selected="<?= $key_controller === 1 ? 'true' : 'false'; ?>">
                                             <span><?= $tab['cta']; ?></span>
                                         </a>
                                     </li>
@@ -52,23 +57,23 @@ $key_body = 0;
                             </ul>
                             <div class="body-tab">
                                 <?php foreach($guide_tabs as $body): $key_body++ ?>
-                                    <div class="the-body item-<?= $key_body; ?> <?php if($key_body === 1): ?>active<?php endif; ?>">
+                                    <div class="the-body item-<?= $key_body; ?> <?php if($key_body === 1): ?>active<?php endif; ?>" role="tabpanel" id="size-guide-item-<?= $key_body; ?>" aria-labelledby="size-guide-tab-<?= $key_body; ?>">
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <?php foreach($body['guide_list'] as $item): ?>
+                                                    <?php foreach(($body['guide_list'] ?: array()) as $item): ?>
                                                         <th><?= $item['name']; ?></th>
                                                     <?php endforeach; ?>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <?php foreach($body['guide_list'] as $item): ?>
+                                                    <?php foreach(($body['guide_list'] ?: array()) as $item): ?>
                                                         <td><?= $item['option_one']; ?></td>
                                                     <?php endforeach; ?>
                                                 </tr>
                                                 <tr>
-                                                    <?php foreach($body['guide_list'] as $item): ?>
+                                                    <?php foreach(($body['guide_list'] ?: array()) as $item): ?>
                                                         <td><?= $item['option_two']; ?></td>
                                                     <?php endforeach; ?>
                                                 </tr>

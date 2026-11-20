@@ -21,11 +21,11 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                 </div>
                 <div class="col-6">
                     <div class="controller-filter">
-                        <button class="filter-reset">
+                        <button type="button" class="filter-reset">
                             <?php if(get_bloginfo("language") == "en-US"): ?>Remove filter<?php else: ?>Quitar filtro<?php endif; ?>
                         </button>
-                        <button class="close-filter">
-                            <i class="fa-solid fa-xmark"></i>
+                        <button type="button" class="close-filter" aria-label="<?= esc_attr(webokids_t('Close filter', 'Cerrar filtro')); ?>" aria-controls="filter-movil">
+                            <?= webokids_icon('xmark', 'solid'); ?>
                         </button>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                     <div class="filter">
                         <?php if($cat): ?>
                             <div class="by-category active">
-                                <div class="filter-name">
+                                <div class="filter-name" role="button" tabindex="0" aria-expanded="true">
                                     <h4>
                                         <?php if(get_bloginfo("language") == "en-US"): ?>
                                             Gender
@@ -55,7 +55,7 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                                         <?php endif; ?>
                                     </h4>
                                     <span class="chevron">
-                                        <svg id="Grupo_10" data-name="Grupo 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.288" height="14.058" viewBox="0 0 25.288 14.058">
+                                        <svg aria-hidden="true" focusable="false" id="Grupo_10" data-name="Grupo 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.288" height="14.058" viewBox="0 0 25.288 14.058">
                                             <defs>
                                                 <clipPath id="clip-path">
                                                 <rect id="Rectángulo_18" data-name="Rectángulo 18" width="25.288" height="14.058" transform="translate(0 0)" fill="none"/>
@@ -71,7 +71,7 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                                     <ul>
                                         <?php foreach($cat as $item): ?>
                                         <li>
-                                            <a href="<?= $item->slug; ?>" class="this-cat this-item">
+                                            <a href="#" class="this-cat this-item" role="button" aria-pressed="false" data-value="<?= esc_attr($item->slug); ?>">
                                                 <span class="checkbox"></span>
                                                 <span class="name"><?= $item->name; ?></span>
                                             </a>
@@ -86,10 +86,10 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                             if($color):
                         ?>
                             <div class="by-color active">
-                                <div class="filter-name">
+                                <div class="filter-name" role="button" tabindex="0" aria-expanded="true">
                                 <h4>Color</h4>
                                     <span class="chevron">
-                                        <svg id="Grupo_10" data-name="Grupo 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.288" height="14.058" viewBox="0 0 25.288 14.058">
+                                        <svg aria-hidden="true" focusable="false" id="Grupo_10" data-name="Grupo 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.288" height="14.058" viewBox="0 0 25.288 14.058">
                                             <defs>
                                                 <clipPath id="clip-path">
                                                 <rect id="Rectángulo_18" data-name="Rectángulo 18" width="25.288" height="14.058" transform="translate(0 0)" fill="none"/>
@@ -105,7 +105,7 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                                     <ul>
                                         <?php foreach($color as $item): $image = get_term_meta($item->term_id, 'image', true); $image_id = wpm_translate_string($image); $image_url = wp_get_attachment_url($image_id); ?>
                                         <li>
-                                            <a href="<?= $item->slug; ?>" class="this-color this-item">
+                                            <a href="#" class="this-color this-item" role="button" aria-pressed="false" data-value="<?= esc_attr($item->slug); ?>">
                                                 <span class="color" style="<?php if(get_term_meta($item->term_id, 'enable_image_color', true)): ?>background-image:url(<?= $image_url; ?>);<?php else: ?>background:<?php echo get_term_meta($item->term_id, 'color_picker', true); endif; ?>"></span>
                                                 <span class="name"><?= $item->name; ?></span>
                                             </a>
@@ -120,12 +120,12 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                             if($size):
                         ?>
                             <div class="by-size active">
-                                <div class="filter-name">
+                                <div class="filter-name" role="button" tabindex="0" aria-expanded="true">
                                 <h4>
                                         <?php if(get_bloginfo("language") == "en-US"): ?>Size<?php else: ?>Talla<?php endif; ?>
                                     </h4>
                                     <span class="chevron">
-                                        <svg id="Grupo_10" data-name="Grupo 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.288" height="14.058" viewBox="0 0 25.288 14.058">
+                                        <svg aria-hidden="true" focusable="false" id="Grupo_10" data-name="Grupo 10" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25.288" height="14.058" viewBox="0 0 25.288 14.058">
                                             <defs>
                                                 <clipPath id="clip-path">
                                                 <rect id="Rectángulo_18" data-name="Rectángulo 18" width="25.288" height="14.058" transform="translate(0 0)" fill="none"/>
@@ -141,7 +141,7 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                                     <ul>
                                         <?php foreach($size as $item): ?>
                                         <li>
-                                            <a href="<?= $item->slug; ?>" class="this-size this-item">
+                                            <a href="#" class="this-size this-item" role="button" aria-pressed="false" data-value="<?= esc_attr($item->slug); ?>">
                                                 <span class="name"><?= $item->name; ?></span>
                                             </a>
                                         </li>
@@ -159,12 +159,12 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <button class="filter-run">
+                    <button type="button" class="filter-run">
                         <span class="text">
                             <?php if(get_bloginfo("language") == "en-US"): ?>Apply filter<?php else: ?>Aplicar filtro<?php endif; ?>
                         </span>
                         <span class="svg">
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
                                 <defs>
                                     <clipPath id="clip-path">
                                     <rect id="Rectángulo_42" data-name="Rectángulo 42" width="23.068" height="23.068" transform="translate(0 0)" fill="none"/>
@@ -185,4 +185,4 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
         </div>
     </div>
 </div>
-<script src="<?= get_template_directory_uri(); ?>/js/product-filter-movil.js"></script>     
+<?php wp_enqueue_script('webokids-product-filter-movil'); ?>     

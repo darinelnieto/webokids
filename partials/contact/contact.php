@@ -20,11 +20,17 @@ $contact = get_field('contact_us');
                         <?php foreach($contact['contact_items'] as $item): ?>
                             <div class="col-6">
                                 <?php if($item['link']): ?>
-                                    <a href="<?= $item['link']['url']; ?>" target="<?= $item['link']['target']; ?>" class="contact-link">
+                                    <?php $contact_label = $item['link']['title'] ?: ($item['image']['title'] ?? wp_parse_url($item['link']['url'], PHP_URL_HOST)); ?>
+                                    <a href="<?= esc_url($item['link']['url']); ?>"<?= webokids_target_attrs($item['link']); ?> class="contact-link" aria-label="<?= esc_attr($contact_label); ?>" title="<?= esc_attr($contact_label); ?>">
                                 <?php endif; ?>
                                 <div class="contact-item">
                                     <?php if($item['image']): ?>
-                                        <img src="<?= $item['image']['url']; ?>" alt="<?= $item['image']['title']; ?>" width="<?= $item['image']['width']; ?>" heigth="<?= $item['image']['height']; ?>" class="icon">
+                                        <?= wp_get_attachment_image($item['image']['ID'] ?? '', 'large', false, array(
+                                            'class' => 'icon',
+                                            'loading' => 'lazy',
+                                            'decoding' => 'async',
+                                            'alt' => 'Webo icono ' . ($item['image']['title'] ?? '')
+                                        )) ?>
                                     <?php endif; ?>
                                 </div>
                                 <?php if($item['link']): ?>

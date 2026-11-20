@@ -17,7 +17,7 @@ if($fqas['fqas_list']):
         <div class="row justify-content-center">
             <div class="col-12 col-md-11 col-lg-10">
                 <div class="fqas-content">
-                    <img src="<?= get_template_directory_uri() ?>/images/contact-favicon.svg" alt="Favicon" class="favicon">
+                    <img src="<?= get_template_directory_uri() ?>/images/contact-favicon.svg" alt="Webo favicon" class="favicon" loading="lazy" decoding="async">
                     <?php if($fqas['title']): ?>
                         <h2><?= $fqas['title']; ?></h2>
                     <?php endif; ?>
@@ -25,11 +25,11 @@ if($fqas['fqas_list']):
                         <?php foreach($fqas['fqas_list'] as $item): $key++; ?>
                             <div class="fqa-item <?php if($key === 1): ?>active<?php endif; ?>">
                                 <?php if($item['question']): ?>
-                                    <div class="question">
+                                    <div class="question" role="button" tabindex="0" aria-expanded="<?= $key === 1 ? 'true' : 'false'; ?>" aria-controls="faq-answer-<?= $key; ?>">
                                         <h3><?= $item['question']; ?></h3>
                                     </div>
                                 <?php endif; if($item['answer']): ?>
-                                    <div class="answer">
+                                    <div class="answer" id="faq-answer-<?= $key; ?>">
                                         <p><?= $item['answer']; ?></p>
                                     </div>
                                 <?php endif; ?>

@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "NODE_OPTIONS=--openssl-legacy-provider npx webpack -d --watch",
     "dev": "NODE_OPTIONS=--openssl-legacy-provider npx webpack -d",
-    "prod": "NODE_OPTIONS=--openssl-legacy-provider npx webpack -p"
+    "prod": "NODE_OPTIONS=--openssl-legacy-provider npx webpack -p",
+    "build:js": "php ditto build:partial-js",
+    "build": "npm run prod && npm run build:js"
   },
   "repository": {
     "type": "git",

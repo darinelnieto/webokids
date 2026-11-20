@@ -21,10 +21,20 @@ $logo_bottom = get_field('logo_bottom');
         <div class="banner-slide owl-carousel">
             <?php foreach($products as $product): ?>
                 <div class="item">
-                    <a href="<?= $product['link']; ?>">
+                    <a href="<?= esc_url($product['link']); ?>" aria-label="<?= esc_attr(webokids_t('View product ', 'Ver producto ') . ($product['product_image']['title'] ?? '')); ?>">
                         <div class="product-image-contain" style="<?php if($product['background_image'] === true): ?>background-image:url(<?= $product['background_img']; ?>)<?php else: ?>background:<?php echo $product['color']; endif; ?>;">
-                            <img src="<?= $background_text['url']; ?>" alt="<?= $background_text['title']; ?>" class="background-text">
-                            <img src="<?= $product['product_image']['url']; ?>" alt="<?= $product['product_image']['title']; ?>" class="product-image">
+                            <?= wp_get_attachment_image($background_text['ID'] ?? '', 'large', false, array(
+                                'class' => 'background-text',
+                                'loading' => 'lazy',
+                                'decoding' => 'async',
+                                'alt' => 'Webo texto de fondo'
+                            )) ?>
+                            <?= wp_get_attachment_image($product['product_image']['ID'] ?? '', 'large', false, array(
+                                'class' => 'product-image',
+                                'loading' => 'lazy',
+                                'decoding' => 'async',
+                                'alt' => 'Webo producto ' . ($product['product_image']['title'] ?? '')
+                            )) ?>
                         </div>
                     </a>
                 </div>
@@ -34,9 +44,9 @@ $logo_bottom = get_field('logo_bottom');
             <ul class="nav-category">
                 <?php foreach($nav as $li): ?>
                     <li>
-                        <a href="<?= home_url(); ?>/product-category/<?= $li['category']->slug; ?>">
+                        <a href="<?= esc_url(home_url('/product-category/' . $li['category']->slug . '/')); ?>">
                             <span><?= $li['category']->name; ?></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
+                            <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
                                 <defs>
                                     <clipPath id="clip-path">
                                     <rect id="Rectángulo_44" data-name="Rectángulo 44" width="23.068" height="23.068" transform="translate(0 0)" fill="none"/>
@@ -55,29 +65,13 @@ $logo_bottom = get_field('logo_bottom');
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
-        <img src="<?= $logo_bottom['url']; ?>" alt="<?= $logo_bottom['title']; ?>" class="logo-bottom">
-        <script>
-            $('.banner-slide').owlCarousel({
-                autoplay:true,
-                loop:true,
-                nav:true,
-                navText:[
-                    `<span></span>`,
-                    `<span></span>`
-                ],
-                dots:false,
-                margin:0,
-                items:1,
-                responsive:{
-                    0:{
-                        nav:false,
-                    },
-                    768:{
-                        nav:true
-                    }
-                }
-            }).css({'opacity':1});
-        </script>
+        <?= wp_get_attachment_image($logo_bottom['ID'] ?? '', 'large', false, array(
+            'class' => 'logo-bottom',
+            'loading' => 'lazy',
+            'decoding' => 'async',
+            'alt' => 'Webo logo'
+        )) ?>
+        <?php webokids_enqueue_carousels(); ?>
     <?php endif; ?>
 </section>
                     

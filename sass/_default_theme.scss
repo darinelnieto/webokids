@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+// Nunito Sans se instala y activa desde wp-admin › Apariencia › Fuentes (WordPress imprime su @font-face).
 @font-face {
     font-family: 'Arista 2.0';
     src: url('../fonts/Arista20.woff2') format('woff2'),
@@ -8,7 +8,7 @@
     font-display: swap;
 }
 /*====================== Variables ========================*/
-$roboto: "Roboto", sans-serif;
+$nunito: "Nunito Sans", sans-serif;
 $arista: 'Arista 2.0';
 $beige: #F1E9E5;
 $beige_light: #F9F6F5;
@@ -31,7 +31,7 @@ $h1: calc(1rem + 3.6vw);
 $p: scaleVW(25, 1920);
 $p_movil: scaleVW(20, 480);
 *{
-    font-family: $roboto;
+    font-family: $nunito;
 }
 p{
     font-size: $p;
@@ -144,7 +144,7 @@ html, body{
                 a{
                     border-color: $black !important;
                     background: $black !important;
-                    font-family: $roboto !important;
+                    font-family: $nunito !important;
                     font-weight: 500 !important;
                     border-radius: 20px !important;
                     &:hover{
@@ -163,4 +163,16 @@ html, body{
     @media(max-width:400px){
         transform: translate3d(-300px, 0, 0) !important;
     }
+}/*============= Íconos SVG inline (reemplazan el JS de Font Awesome) =============*/
+.svg-inline--fa{
+    display: inline-block;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -.125em;
+    box-sizing: content-box;
+}
+/*============= Foco visible en elementos con role="button" =============*/
+[role="button"]:focus-visible{
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }

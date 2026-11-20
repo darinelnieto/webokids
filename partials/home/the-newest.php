@@ -15,7 +15,7 @@ $the_newest = get_field('the_newest');
         <div class="row">
             <div class="col-12 text-center">
                 <h2 class="title"><?= $the_newest['title'] ?></h2>
-                <a href="<?= $the_newest['cta_shop_here']; ?>" class="main-cta">
+                <a href="<?= esc_url($the_newest['cta_shop_here']); ?>" class="main-cta">
                     <?php if(get_bloginfo("language") == "en-US"): ?>
                         Buy the new here
                     <?php else: ?>
@@ -27,10 +27,15 @@ $the_newest = get_field('the_newest');
     </div>
     <div class="banner-contain">
         <?php if($the_newest['gallery']): ?>
+            <?php webokids_enqueue_carousels(); ?>
             <div class="galleries owl-carousel">
                 <?php foreach($the_newest['gallery'] as $image): ?>
                     <div class="item">
-                        <img src="<?= $image['url']; ?>" alt="<?= $image['title']; ?>">
+                        <?= wp_get_attachment_image($image['ID'] ?? '', 'full', false, array(
+                            'loading' => 'lazy',
+                            'decoding' => 'async',
+                            'alt' => 'Webo lo nuevo ' . ($image['title'] ?? '')
+                        )) ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -38,7 +43,7 @@ $the_newest = get_field('the_newest');
         <div class="banner-texts">
             <h3><?= $the_newest['banner_title']; ?></h3>
             <p><?= $the_newest['banner_description']; ?></p>
-            <a href="<?= $the_newest['link_shop']; ?>">
+            <a href="<?= esc_url($the_newest['link_shop']); ?>" aria-label="<?= esc_attr(webokids_t('Buy now: ', 'Comprar ahora: ')); ?><?= esc_attr(wp_strip_all_tags($the_newest['banner_title'] ?? '')); ?>">
                 <span class="text">
                     <?php if(get_bloginfo("language") == "en-US"): ?>
                         Buy now
@@ -46,7 +51,7 @@ $the_newest = get_field('the_newest');
                         Comprar ahora
                     <?php endif; ?>
                 </span>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
+                <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
                     <defs>
                         <clipPath id="clip-path">
                         <rect id="Rectángulo_44" data-name="Rectángulo 44" width="23.068" height="23.068" transform="translate(0 0)" fill="none"/>

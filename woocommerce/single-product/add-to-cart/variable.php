@@ -48,8 +48,13 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
                 <?php if($attribute_name === 'pa_essize'):  ?>
                 <?php $size_guide = get_field('size_guide', 'option'); if($size_guide['page_link']): ?>
                     <div class="size-guide">
-                        <a href="<?= $size_guide['page_link']; ?>" class="cta">
-                            <img src="<?= $size_guide['icon']['url']; ?>" alt="Sice icon" width="<?= $size_guide['icon']['width']; ?>" height="<?= $size_guide['icon']['height']; ?>" class="icon">
+                        <a href="<?= esc_url($size_guide['page_link']); ?>" class="cta">
+                            <?= wp_get_attachment_image($size_guide['icon']['ID'] ?? '', 'large', false, array(
+                                'class' => 'icon',
+                                'loading' => 'lazy',
+                                'decoding' => 'async',
+                                'alt' => 'Webo icono guía de tallas'
+                            )) ?>
                             <span class="text"><?= $size_guide['text']; ?></span>
                         </a>
                     </div>
@@ -57,9 +62,9 @@ do_action( 'woocommerce_before_add_to_cart_form' ); ?>
                 endif;
                 ?>
             </div>
-            <ul id="options-color">
+            <ul id="options-color" aria-label="<?php echo esc_attr( wc_attribute_label( $attribute_name ) ); ?>">
                 <?php foreach ($options as $option): ?>
-                    <li class="">
+                    <li class="" role="button" tabindex="0" aria-pressed="false">
                         <input type="hidden" class="variation-checkbox" value="<?php echo esc_attr($option); ?>">
                         <span class="checked"></span>
                         <span class="text">

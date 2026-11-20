@@ -23,7 +23,12 @@ if($widgets):
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="the-widget">
                         <div class="title-and-figure">
-                            <img src="<?= $item['figure']['url']; ?>" alt="<?= $item['figure']['title']; ?>" class="figure">
+                            <?= wp_get_attachment_image($item['figure']['ID'] ?? '', 'large', false, array(
+                                'class' => 'figure',
+                                'loading' => 'lazy',
+                                'decoding' => 'async',
+                                'alt' => 'Webo imagen del valor ' . $item['figure']['title']
+                            )) ?>
                         </div>
                         <div class="description">
                             <p><?= $item['description']; ?></p>

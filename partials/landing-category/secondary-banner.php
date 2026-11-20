@@ -14,10 +14,15 @@ if($banner['gallery']):
 <section class="secondary-banner-partial-77f06b">
     <div class="banner-contain">
         <?php if($banner['gallery']): ?>
+            <?php webokids_enqueue_carousels(); ?>
             <div class="galleries owl-carousel">
                 <?php foreach($banner['gallery'] as $image): ?>
                     <div class="item">
-                        <img src="<?= $image['url']; ?>" alt="<?= $image['title']; ?>">
+                        <?= wp_get_attachment_image($image['ID'] ?? '', 'full', false, array(
+                            'loading' => 'lazy',
+                            'decoding' => 'async',
+                            'alt' => 'Webo banner ' . ($image['title'] ?? '')
+                        )) ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -25,7 +30,7 @@ if($banner['gallery']):
         <div class="banner-texts">
             <h3><?= $banner['banner_title']; ?></h3>
             <p><?= $banner['banner_description']; ?></p>
-            <a href="<?= get_the_permalink($banner['link_shop']->ID); ?>">
+            <a href="<?= esc_url(get_the_permalink($banner['link_shop']->ID)); ?>" aria-label="<?= esc_attr(webokids_t('Buy now: ', 'Comprar ahora: ')); ?><?= esc_attr(wp_strip_all_tags($banner['banner_title'] ?? '')); ?>">
                 <span class="text">
                     <?php if(get_bloginfo("language") == "en-US"): ?>
                         Buy now
@@ -33,7 +38,7 @@ if($banner['gallery']):
                         Comprar ahora
                     <?php endif; ?>
                 </span>
-                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
+                <svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
                     <defs>
                         <clipPath id="clip-path">
                         <rect id="Rectángulo_44" data-name="Rectángulo 44" width="23.068" height="23.068" transform="translate(0 0)" fill="none"/>

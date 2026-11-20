@@ -35,30 +35,47 @@ $attachment_ids = $product->get_gallery_image_ids();
 $featured_image = get_the_post_thumbnail_url();
 $key = 0;
 $shipping_details = get_field('shipping_details', 'option');
+// "Ver todo" de relacionados: categoría principal del producto o, si no tiene, la tienda.
+$product_cats = get_the_terms(get_the_ID(), 'product_cat');
+$see_all_link = (!empty($product_cats) && !is_wp_error($product_cats)) ? get_term_link($product_cats[0]) : '';
+if (!$see_all_link || is_wp_error($see_all_link)) {
+	$see_all_link = wc_get_page_permalink('shop');
+}
 ?>
 <div class="single-product-template-134541 body-post" id="product-<?php the_ID(); ?>" <?php wc_product_class( '', $product ); ?>>
 	<div class="product-details">
 		<div class="row" id="row-product-details">
 			<div class="col-12 col-md-6 col-lg-7">
-				<div class="gallery-contain <?php if(wp_is_mobile()): ?>gallery-slide owl-carousel<?php endif; ?>">
-					<a href="<?= $featured_image; ?>" class="zoom-trigger">
-						<img src="<?= $featured_image; ?>" alt="" class="zoom-image">
+				<div class="gallery-contain <?php if(wp_is_mobile()): ?>gallery-slide owl-carousel<?php endif; ?>" id="product-gallery">
+					<a href="<?= esc_url($featured_image); ?>" class="zoom-trigger" aria-label="<?= esc_attr(webokids_t('Zoom image of ', 'Ampliar imagen de ') . get_the_title()); ?>">
+						<?= wp_get_attachment_image(get_post_thumbnail_id() ?: '', 'large', false, array(
+							'class' => 'zoom-image',
+							'loading' => 'eager',
+							'fetchpriority' => 'high',
+							'decoding' => 'async',
+							'alt' => 'Webo ' . get_the_title()
+						)) ?>
 					</a>
 					<?php foreach ($attachment_ids as $attachment_id): $key++; $image_url = wp_get_attachment_image_src($attachment_id, 'full'); ?>
-						<a href="<?= $image_url[0]; ?>" class="zoom-trigger <?php if($key > 3 && !wp_is_mobile()): ?>this-hidden d-none<?php endif; ?>">
-							<img src="<?= $image_url[0]; ?>" alt="" class="zoom-image">
+						<a href="<?= esc_url($image_url[0]); ?>" class="zoom-trigger <?php if($key > 3 && !wp_is_mobile()): ?>this-hidden d-none<?php endif; ?>" aria-label="<?= esc_attr(webokids_t('Zoom image ', 'Ampliar imagen ') . ($key + 1) . ' - ' . get_the_title()); ?>">
+							<?= wp_get_attachment_image($attachment_id, 'large', false, array(
+								'class' => 'zoom-image',
+								'loading' => 'lazy',
+								'decoding' => 'async',
+								'alt' => 'Webo ' . get_the_title() . ' ' . $key
+							)) ?>
 						</a>
 					<?php endforeach; ?>
 				</div>
 				<?php if(!wp_is_mobile()): if($key > 3): ?>
-					<button class="show-more-img">
+					<button type="button" class="show-more-img" aria-controls="product-gallery" aria-expanded="false">
 						<div class="text more">
 							<?php if(get_bloginfo("language") == "en-US"): ?>See more<?php else: ?>Ver más<?php endif; ?>
 						</div>
 						<div class="text less d-none">
-							<?php if(get_bloginfo("language") == "en-US"): ?>see less<?php else: ?>Descripción<?php endif; ?>
+							<?php if(get_bloginfo("language") == "en-US"): ?>See less<?php else: ?>Ver menos<?php endif; ?>
 						</div>
-						<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
+						<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
 							<defs>
 								<clipPath id="clip-path">
 								<rect id="Rectángulo_23" data-name="Rectángulo 23" width="23.068" height="23.068" transform="translate(0 0)" fill="none"/>
@@ -95,7 +112,11 @@ $shipping_details = get_field('shipping_details', 'option');
 							<?php foreach($shipping_details as $item): ?>
 								<li>
 									<?php if($item['icon']): ?>
-										<img src="<?= $item['icon']['url']; ?>" alt="<?= $item['icon']['title']; ?>" width="<?= $item['icon']['width']; ?>" height="<?= $item['icon']['height']; ?>">
+										<?= wp_get_attachment_image($item['icon']['ID'] ?? '', 'large', false, array(
+											'loading' => 'lazy',
+											'decoding' => 'async',
+											'alt' => 'Webo icono ' . ($item['icon']['title'] ?? '')
+										)) ?>
 									<?php endif; if($item['text']): ?>
 										<span class="text-shipping"><?= $item['text']; ?></span>
 									<?php endif; ?>
@@ -131,12 +152,12 @@ $shipping_details = get_field('shipping_details', 'option');
 						</div>
 						<div class="ctas">
 							<div class="see-all-contaian">
-								<a href="<?= $content['see_all_products']; ?>">
+								<a href="<?= esc_url($see_all_link); ?>" aria-label="<?= esc_attr(webokids_t('See all products', 'Ver todos los productos')); ?>">
 									<span class="text">
 										<?php if(get_bloginfo("language") == "en-US"): ?>See all<?php else: ?>Ver todo<?php endif; ?>
 									</span>
 									<span class="svg">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
+										<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.068" height="23.068" viewBox="0 0 23.068 23.068">
 											<defs>
 												<clipPath id="clip-path">
 												<rect id="Rectángulo_42" data-name="Rectángulo 42" width="23.068" height="23.068" transform="translate(0 0)" fill="none"/>
@@ -156,12 +177,12 @@ $shipping_details = get_field('shipping_details', 'option');
 							<div class="nav-slide-products">
 								<ul>
 									<li>
-										<a href="#" class="prev">
+										<a href="#" class="prev" role="button" aria-label="<?= esc_attr(webokids_t('Previous products', 'Productos anteriores')); ?>">
 											<span></span>
 										</a>
 									</li>
 									<li>
-										<a href="#" class="next">
+										<a href="#" class="next" role="button" aria-label="<?= esc_attr(webokids_t('Next products', 'Productos siguientes')); ?>">
 											<span></span>
 										</a>
 									</li>
@@ -175,4 +196,15 @@ $shipping_details = get_field('shipping_details', 'option');
 		</div>
 	</div>
 </div>
-<script src="<?= get_template_directory_uri() ?>/js/sticky.js"></script>
+<?php
+/**
+ * Hook: woocommerce_after_single_product.
+ * Lo usan plugins como Meta for WooCommerce (evento ViewContent del píxel).
+ */
+do_action( 'woocommerce_after_single_product' );
+
+webokids_enqueue_single_product_js();
+if (wp_is_mobile()) {
+	webokids_enqueue_carousels();
+}
+?>

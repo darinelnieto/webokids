@@ -4,30 +4,311 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+require_once get_template_directory() . '/inc/icons.php';
+
 /**
- * Register Theme Scripts
+ * Versión de un asset según su fecha de modificación (cache busting).
+ */
+function webokids_asset_version( $relative_path ) {
+  $file_path = get_template_directory() . $relative_path;
+  return file_exists( $file_path ) ? (string) filemtime( $file_path ) : null;
+}
+
+/**
+ * Ruta de un JS del tema.
+ * El fuente vive en js/partials/{name}.js y su espejo minificado en js/partials-min/{name}.min.js
+ * (se genera con: php ditto build:partial-js {name}  |  npm run build:js).
+ * Con SCRIPT_DEBUG activo se sirve el fuente sin minificar.
+ */
+function webokids_js_path( $name ) {
+  $min = '/js/partials-min/' . $name . '.min.js';
+  $src = '/js/partials/' . $name . '.js';
+  $use_src = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) || ! file_exists( get_template_directory() . $min );
+  return $use_src ? $src : $min;
+}
+
+/**
+ * Registra un JS del tema en el footer con carga diferida.
+ */
+function webokids_register_js( $handle, $name, $deps = array( 'jquery' ) ) {
+  $path = webokids_js_path( $name );
+  wp_register_script( $handle, get_template_directory_uri() . $path, $deps, webokids_asset_version( $path ), array(
+    'in_footer' => true,
+    'strategy'  => 'defer',
+  ) );
+}
+
+/**
+ * true si el sitio se está mostrando en inglés.
+ */
+function webokids_is_en() {
+  return get_bloginfo( 'language' ) === 'en-US';
+}
+
+/**
+ * Texto según el idioma actual (inglés / español).
+ */
+function webokids_t( $en, $es ) {
+  return webokids_is_en() ? $en : $es;
+}
+
+/**
+ * Atributos target/rel seguros para enlaces (ACF link o string de target).
+ */
+function webokids_target_attrs( $target ) {
+  if ( is_array( $target ) ) {
+    $target = $target['target'] ?? '';
+  }
+  return $target === '_blank' ? ' target="_blank" rel="noopener noreferrer"' : '';
+}
+
+/**
+ * Register Theme Styles & Scripts
  * https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
  */
 function ditto_scripts() {
-  wp_enqueue_style( 'core', get_template_directory_uri() . '/style.css' );
-  wp_enqueue_style( 'main-styles', get_template_directory_uri() . '/css/main.bundle.css' );
-  wp_enqueue_style('bootstrap.css', get_template_directory_uri() . '/css/bootstrap.min.css');
-  wp_enqueue_style('owl-carousel.css', get_template_directory_uri() . '/css/owl.carousel.min.css');
+  $uri = get_template_directory_uri();
 
-  wp_enqueue_script( 'main-scripts', get_template_directory_uri() . '/js/main.bundle.js', array( 'jquery' ), '', true );
+  // Estilos (mismo orden de cascada que antes; style.css solo tiene la cabecera del tema y no se carga).
+  wp_enqueue_style( 'main-styles', $uri . '/css/main.bundle.css', array(), webokids_asset_version( '/css/main.bundle.css' ) );
+  wp_enqueue_style( 'bootstrap.css', $uri . '/css/bootstrap.min.css', array( 'main-styles' ), webokids_asset_version( '/css/bootstrap.min.css' ) );
+  wp_enqueue_style( 'owl-carousel.css', $uri . '/css/owl.carousel.min.css', array( 'bootstrap.css' ), webokids_asset_version( '/css/owl.carousel.min.css' ) );
+  // La fuente de texto (Nunito Sans) se instala desde wp-admin › Apariencia › Fuentes; WordPress imprime su @font-face.
+
   // Se usa el jQuery de WordPress. El jquery-3.5.1 propio del tema reemplazaba al de WP,
   // borraba blockUI y rompía el checkout.js de WooCommerce (no se recalculaba el envío).
-  // Los scripts del tema usan $ global, así que se expone el jQuery de WP como $.
-  wp_enqueue_script('jquery');
-  wp_add_inline_script('jquery-core', 'window.$ = window.jQuery;');
-  wp_enqueue_script('bootstrap.js',  get_template_directory_uri() . '/js/bootstrap.min.js', array( 'jquery' ));
-  wp_enqueue_script('owl-carousel.js', get_template_directory_uri() . '/js/owl.carousel.min.js', array( 'jquery' ));
-  wp_enqueue_script('font-awesome.js', get_template_directory_uri() . '/js/font-awesome.js');
-  wp_register_script('custom.js', get_template_directory_uri() . '/js/custom.js', array('jquery'), '1', true);
-  wp_enqueue_script('zoom-js', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-zoom/1.7.21/jquery.zoom.min.js', array('jquery'), null, true);
-  wp_enqueue_script('custom.js');
+  // Se expone el jQuery de WP como $ para scripts inline de plugins/temas que lo esperan.
+  wp_enqueue_script( 'jquery' );
+  wp_add_inline_script( 'jquery-core', 'window.$ = window.jQuery;' );
+
+  // Librerías: solo se registran; cada partial encola lo que necesita.
+  wp_register_script( 'owl-carousel', $uri . '/js/owl.carousel.min.js', array( 'jquery' ), webokids_asset_version( '/js/owl.carousel.min.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+  // Respaldo por si WooCommerce no registra su jquery.zoom (wc-zoom).
+  wp_register_script( 'jquery-zoom', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-zoom/1.7.21/jquery.zoom.min.js', array( 'jquery' ), null, array( 'in_footer' => true, 'strategy' => 'defer' ) );
+
+  // JS del tema (fuente: js/partials, minificado: js/partials-min).
+  webokids_register_js( 'webokids-custom', 'custom' );
+  webokids_register_js( 'webokids-carousels', 'carousels', array( 'jquery', 'owl-carousel' ) );
+  webokids_register_js( 'webokids-sticky', 'sticky' );
+  webokids_register_js( 'webokids-product-list', 'product-list' );
+  webokids_register_js( 'webokids-product-filter', 'product-filter', array( 'jquery', 'webokids-product-list' ) );
+  webokids_register_js( 'webokids-product-filter-movil', 'product-filter-movil', array( 'jquery', 'webokids-product-list' ) );
+  webokids_register_js( 'webokids-sales-countdown', 'sales-countdown' );
+
+  wp_localize_script( 'webokids-product-list', 'webokidsProducts', array(
+    'endpoint'  => get_site_url() . ( webokids_is_en() ? '' : '/es' ) . '/wp-json/product/list',
+    'noResults' => webokids_t( 'No related products found', 'No se encontraron productos relacionados' ),
+  ) );
+
+  wp_add_inline_script( 'webokids-custom', 'window._dittoURI_ = ' . wp_json_encode( $uri ) . '; window._dittoURL_ = ' . wp_json_encode( get_site_url() ) . ';', 'before' );
+
+  // Global: header, footer, formularios, etc.
+  wp_enqueue_script( 'webokids-custom' );
 }
 add_action( 'wp_enqueue_scripts', 'ditto_scripts');
+
+/**
+ * Encola el JS de la ficha de producto con el zoom de WooCommerce (o el del CDN como respaldo).
+ */
+function webokids_enqueue_single_product_js() {
+  wp_enqueue_script( wp_script_is( 'wc-zoom', 'registered' ) ? 'wc-zoom' : 'jquery-zoom' );
+  wp_enqueue_script( 'webokids-sticky' );
+}
+
+/**
+ * Encola los carruseles (Owl) desde los partials que los usan.
+ */
+function webokids_enqueue_carousels() {
+  wp_enqueue_script( 'webokids-carousels' );
+}
+
+/**
+ * Preconnect a orígenes externos que se usan en todas las páginas.
+ */
+function webokids_resource_hints( $urls, $relation_type ) {
+  if ( 'preconnect' === $relation_type ) {
+    $urls[] = 'https://www.googletagmanager.com';
+  }
+  return $urls;
+}
+add_filter( 'wp_resource_hints', 'webokids_resource_hints', 10, 2 );
+
+/**
+ * URL del archivo de una fuente instalada en wp-admin › Apariencia › Fuentes.
+ */
+function webokids_font_library_src( $family, $weight = '400', $style = 'normal' ) {
+  $cache_key = 'webokids_font_src_' . md5( $family . $weight . $style );
+  $src       = get_transient( $cache_key );
+  if ( false !== $src ) {
+    return $src;
+  }
+
+  $src   = '';
+  $faces = get_posts( array(
+    'post_type'      => 'wp_font_face',
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'no_found_rows'  => true,
+  ) );
+  foreach ( $faces as $face ) {
+    $data = json_decode( $face->post_content, true );
+    if ( is_array( $data )
+      && trim( $data['fontFamily'] ?? '', '"\' ' ) === $family
+      && (string) ( $data['fontWeight'] ?? '' ) === (string) $weight
+      && ( $data['fontStyle'] ?? 'normal' ) === $style
+      && is_string( $data['src'] ?? null ) ) {
+      $src = $data['src'];
+      break;
+    }
+  }
+
+  set_transient( $cache_key, $src, DAY_IN_SECONDS );
+  return $src;
+}
+
+/**
+ * Limpia la caché de URLs de fuentes cuando se instala o borra una fuente.
+ */
+function webokids_flush_font_cache( $post_id ) {
+  if ( in_array( get_post_type( $post_id ), array( 'wp_font_face', 'wp_font_family' ), true ) ) {
+    delete_transient( 'webokids_font_src_' . md5( 'Nunito Sans' . '400' . 'normal' ) );
+  }
+}
+add_action( 'save_post', 'webokids_flush_font_cache' );
+add_action( 'before_delete_post', 'webokids_flush_font_cache' );
+
+/**
+ * Precarga las fuentes que se ven al cargar: Arista (títulos) y Nunito Sans 400 (texto).
+ */
+function webokids_preload_fonts() {
+  $fonts = array_filter( array(
+    get_template_directory_uri() . '/fonts/Arista20.woff2',
+    webokids_font_library_src( 'Nunito Sans', '400', 'normal' ),
+  ) );
+  foreach ( $fonts as $font ) {
+    echo '<link rel="preload" href="' . esc_url( $font ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+  }
+}
+add_action( 'wp_head', 'webokids_preload_fonts', 2 );
+
+/*================= Render-blocking CSS =================*/
+
+/**
+ * true en páginas sin productos ni WooCommerce (contacto, nosotros, guía de tallas, políticas).
+ */
+function webokids_is_content_page() {
+  return is_page_template( array(
+    'templates/contact-us-template.php',
+    'templates/about-us-template.php',
+    'templates/size-guide-template.php',
+    'templates/policies-template.php',
+  ) );
+}
+
+/**
+ * Handles de CSS que se cargan sin bloquear el render en la vista actual.
+ * Solo van aquí estilos de cosas que no se ven al cargar la página (footer, popups,
+ * formularios) o que la vista no usa.
+ */
+function webokids_deferred_styles() {
+  static $cached = null;
+  if ( null !== $cached ) {
+    return $cached;
+  }
+
+  $handles = array(
+    'sbi_styles',                     // Instagram Feed (footer).
+    'contact-form-7',                 // Formularios (footer / contacto).
+    'jquery-selectBox',               // YITH Wishlist.
+    'woocommerce_prettyPhoto_css',    // Lightbox de YITH Wishlist.
+    'perfect-scrollbar',              // Popup del carrito.
+    'perfect-scrollbar-theme',        // Popup del carrito.
+    'wcspc-fonts',                    // Popup del carrito.
+    'wcspc-frontend',                 // Popup del carrito.
+    'photoswipe',                     // Visor de fotos de WooCommerce (se abre al hacer clic).
+    'photoswipe-default-skin',
+  );
+
+  // El botón de la lista de deseos solo se ve en la ficha de producto y en la lista de deseos.
+  $is_wishlist = function_exists( 'yith_wcwl_is_wishlist_page' ) && yith_wcwl_is_wishlist_page();
+  if ( ! ( function_exists( 'is_product' ) && is_product() ) && ! $is_wishlist ) {
+    $handles[] = 'yith-wcwl-main';
+    $handles[] = 'yith-wcwl-add-to-wishlist';
+  }
+
+  // wc-blocks-style: WooCommerce lo usa para los avisos (añadido al carrito, errores) y para
+  // el contenido con bloques. Solo bloquea donde esos avisos se ven al cargar.
+  $is_woo_flow = function_exists( 'is_woocommerce' ) && ( is_product() || is_cart() || is_checkout() || is_account_page() );
+  $has_blocks  = is_singular() && has_blocks( get_queried_object_id() );
+  if ( ! $is_woo_flow && ! $has_blocks ) {
+    $handles[] = 'wc-blocks-style';
+  }
+
+  // Páginas sin productos: WooCommerce solo hace falta para el popup del carrito.
+  if ( webokids_is_content_page() ) {
+    $handles[] = 'woocommerce-general';
+    $handles[] = 'woocommerce-layout';
+    $handles[] = 'woocommerce-smallscreen';
+  }
+
+  $cached = apply_filters( 'webokids_deferred_styles', $handles );
+  return $cached;
+}
+
+/**
+ * Carga los CSS de webokids_deferred_styles() sin bloquear el render:
+ * media="print" + onload, con <noscript> de respaldo.
+ */
+function webokids_defer_style_tag( $tag, $handle, $href, $media ) {
+  if ( is_admin() || ! in_array( $handle, webokids_deferred_styles(), true ) ) {
+    return $tag;
+  }
+  $media    = ( $media && 'all' !== $media ) ? $media : 'all';
+  $deferred = preg_replace( '/\smedia=([\'"])[^\'"]*\1/', '', $tag );
+  $deferred = str_replace( '<link ', '<link media="print" onload="this.media=\'' . esc_attr( $media ) . '\';this.onload=null" ', $deferred );
+  return $deferred . '<noscript>' . trim( $tag ) . "</noscript>\n";
+}
+add_filter( 'style_loader_tag', 'webokids_defer_style_tag', 10, 4 );
+
+
+/**
+ * Meta description (no hay plugin SEO instalado).
+ */
+function webokids_meta_description() {
+  $description = '';
+
+  if ( is_front_page() || is_home() ) {
+    $description = get_bloginfo( 'description' );
+  } elseif ( is_singular() ) {
+    $description = get_the_excerpt( get_queried_object_id() );
+    if ( ! $description ) {
+      $description = get_post_field( 'post_content', get_queried_object_id() );
+    }
+  } elseif ( is_category() || is_tag() || is_tax() ) {
+    $description = term_description();
+  }
+
+  if ( ! $description && is_front_page() && function_exists( 'get_field' ) ) {
+    $about = get_field( 'about_us' );
+    $description = is_array( $about ) ? ( $about['description'] ?? '' ) : '';
+  }
+
+  if ( ! $description ) {
+    $description = get_bloginfo( 'description' );
+  }
+
+  // Último recurso: título de la vista + nombre del sitio (mejor llenar el extracto de cada página).
+  if ( ! $description ) {
+    $description = trim( wp_get_document_title() );
+  }
+
+  $description = wp_trim_words( wp_strip_all_tags( strip_shortcodes( $description ) ), 30, '…' );
+
+  if ( $description ) {
+    echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
+  }
+}
+add_action( 'wp_head', 'webokids_meta_description', 1 );
 
 /**
  * Register Navigation Menus
@@ -46,6 +327,10 @@ add_action( 'init', 'ditto_navigation_menus' );
  * https://developer.wordpress.org/reference/functions/add_theme_support/
  */
 add_theme_support( 'custom-logo' );
+add_theme_support( 'title-tag' );
+// Permite escribir el extracto de las páginas, que se usa como meta description.
+add_post_type_support( 'page', 'excerpt' );
+add_theme_support( 'html5', array( 'script', 'style', 'search-form', 'gallery', 'caption' ) );
 
 /**
  * Login Styles

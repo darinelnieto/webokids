@@ -102,3 +102,71 @@ class MakePartialCommand extends Command {
         }
     }
 }
+
+class BuildPartialJsCommand extends Command {
+    protected $commandName = 'build:partial-js';
+    protected $commandDescription = "Minify js/partials/*.js into js/partials-min/*.min.js";
+
+    protected $commandArgumentName = "partial name";
+    protected $commandArgumentDescription = "Optional file name (without .js). If empty, all js/partials files are built.";
+
+    protected function configure() {
+        $this
+            ->setName($this->commandName)
+            ->setDescription($this->commandDescription)
+            ->addArgument(
+                $this->commandArgumentName,
+                InputArgument::OPTIONAL,
+                $this->commandArgumentDescription
+            );
+    }
+
+    protected function execute(InputInterface $input, OutputInterface $output) {
+        $partialName = $input->getArgument($this->commandArgumentName);
+        $jsFiles = array();
+
+        if ($partialName) {
+            $fileName = str_replace(array(' ', '.js'), '', $partialName);
+            $sourceFile = 'js/partials/'.$fileName.'.js';
+            if (!is_file($sourceFile)) {
+                $output->writeln('The partial js file does not exist: '.$sourceFile);
+                return 1;
+            }
+            $jsFiles[] = $sourceFile;
+        } else {
+            foreach ((array) glob('js/partials/*.js') as $file) {
+                if (substr($file, -7) !== '.min.js') {
+                    $jsFiles[] = $file;
+                }
+            }
+        }
+
+        if (empty($jsFiles)) {
+            $output->writeln('No partial js files found to build.');
+            return 1;
+        }
+
+        if (!is_dir('js/partials-min')) {
+            mkdir('js/partials-min', 0777, true);
+        }
+
+        $failed = false;
+        foreach ($jsFiles as $sourceFile) {
+            $targetFile = 'js/partials-min/'.basename($sourceFile, '.js').'.min.js';
+            $commandOutput = array();
+            $command = 'npx terser '.escapeshellarg($sourceFile).' --compress --mangle --comments false --output '.escapeshellarg($targetFile).' 2>&1';
+            exec($command, $commandOutput, $exitCode);
+
+            if ($exitCode !== 0) {
+                $failed = true;
+                $output->writeln('Error building '.$sourceFile);
+                $output->writeln(implode("\n", $commandOutput));
+                continue;
+            }
+
+            $output->writeln($targetFile.' built.');
+        }
+
+        return $failed ? 1 : 0;
+    }
+}

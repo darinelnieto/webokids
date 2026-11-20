@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                         <?php wp_nav_menu(['menu'=>'Product category']); ?>
                     </div>
                     <?php if(!wp_is_mobile()): ?>
-                        <button class="reset-filter">
+                        <button type="button" class="reset-filter">
                             <?php if(get_bloginfo("language") == "en-US"): ?>Remove filter<?php else: ?>Quitar filtro<?php endif; ?>
                         </button>
                     <?php endif; ?>
@@ -32,26 +32,11 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
             <?php endif; ?>
             <div class="col-12 col-md-9 col-lg-10">
-                <div class="product-list" id="poduct-list">
+                <div class="product-list" id="poduct-list" aria-live="polite">
                     <?= the_content(); ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<script>
-    <?php if(get_bloginfo("language") == "en-US"): ?>
-        const rout = _dittoURL_ + "/wp-json/product/list";
-    <?php else: ?>
-        const rout = _dittoURL_ + "/es/wp-json/product/list";
-    <?php endif; ?>
-    var products = [];
-    var error = '<?php if(get_bloginfo("language") == "en-US"): ?>No related products found<?php else: ?>No se encontraron productos relacionados<?php endif; ?>';
-    $(()=>{
-        $('.columns-4').addClass('row');
-        $('.columns-4 a').addClass('col-6 col-md-4 mb-4');
-        setTimeout(() => {
-            $('.product-list').addClass('show');
-        }, 1000);
-    });
-</script> 
+<?php wp_enqueue_script('webokids-product-list'); ?>

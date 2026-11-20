@@ -21,9 +21,9 @@ $instagram_cta = get_field('cta_instagram', 'option');
                 <div class="col-12">
                     <h2><?= get_field('instagram_title', 'option'); ?></h2>
                     <?php if($instagram_cta): ?>
-                        <a href="<?= $instagram_cta['url']; ?>" target="<?= $instagram_cta['target']; ?>" class="instagram-cta d-flex d-md-none">
+                        <a href="<?= esc_url($instagram_cta['url']); ?>"<?= webokids_target_attrs($instagram_cta); ?> class="instagram-cta d-flex d-md-none">
                             <span class="text"><?= $instagram_cta['title']; ?></span>
-                            <span class="icon-suscribe"><i class="fa-regular fa-heart"></i></span>
+                            <span class="icon-suscribe"><?= webokids_icon('heart', 'regular'); ?></span>
                         </a>
                     <?php endif; ?>
                 </div>
@@ -72,12 +72,16 @@ $instagram_cta = get_field('cta_instagram', 'option');
                         <div class="row justify-content-between align-items-center">
                             <?php if($favicon): ?>
                                 <div class="col-12 col-md-2 favicon-content">
-                                    <img src="<?= $favicon['url']; ?>" alt="<?= $favicon['title']; ?>">
+                                    <?= wp_get_attachment_image($favicon['ID'] ?? '', 'large', false, array(
+                                        'loading' => 'lazy',
+                                        'decoding' => 'async',
+                                        'alt' => 'Webo favicon'
+                                    )) ?>
                                 </div>
                             <?php endif; if($instagram_link): ?>
                                 <div class="col-12 col-md-3 instagram-content">
-                                    <a href="<?= $instagram_link['url']; ?>" target="<?= $instagram_link['target']; ?>">
-                                        <i class="fa-brands fa-instagram"></i>
+                                    <a href="<?= esc_url($instagram_link['url']); ?>"<?= webokids_target_attrs($instagram_link); ?> aria-label="<?= esc_attr('Instagram ' . $instagram_link['title']); ?>">
+                                        <?= webokids_icon('instagram', 'brands'); ?>
                                         <span><?= $instagram_link['title']; ?></span>
                                     </a>
                                 </div>
