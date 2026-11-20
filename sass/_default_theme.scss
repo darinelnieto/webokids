@@ -1,4 +1,4 @@
-// Nunito Sans se instala y activa desde wp-admin › Apariencia › Fuentes (WordPress imprime su @font-face).
+// Nunito se instala y activa desde wp-admin › Apariencia › Fuentes (WordPress imprime su @font-face).
 @font-face {
     font-family: 'Arista 2.0';
     src: url('../fonts/Arista20.woff2') format('woff2'),
@@ -8,7 +8,7 @@
     font-display: swap;
 }
 /*====================== Variables ========================*/
-$nunito: "Nunito Sans", sans-serif;
+$nunito: "Nunito", sans-serif;
 $arista: 'Arista 2.0';
 $beige: #F1E9E5;
 $beige_light: #F9F6F5;
@@ -42,7 +42,7 @@ p{
     }
 }
 .container{
-    width: 100%;
+    width: 100% !important;
     max-width: 1300px !important;
 }
 html, body{
