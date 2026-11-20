@@ -73,10 +73,10 @@ $size = get_terms(['taxonomy' => 'pa_essize']);
                 </div>
                 <div class="the-filter">
                     <ul>
-                        <?php foreach($color as $item): $image = get_term_meta($item->term_id, 'image', true); $image_id = wpm_translate_string($image); $image_url = wp_get_attachment_url($image_id); ?>
+                        <?php foreach($color as $item): $image = get_term_meta($item->term_id, 'image', true); $image_id = wpm_translate_string($image); $image_url = wp_get_attachment_image_url($image_id, 'thumbnail'); ?>
                         <li>
                             <a href="#" class="this-color" role="button" aria-pressed="false" data-value="<?= esc_attr($item->slug); ?>">
-                                <span class="color" style="<?php if(get_term_meta($item->term_id, 'enable_image_color', true)): ?>background-image:url(<?= $image_url; ?>);<?php else: ?>background:<?php echo get_term_meta($item->term_id, 'color_picker', true); endif; ?>"></span>
+                                <span class="color" style="<?php if(get_term_meta($item->term_id, 'enable_image_color', true)): ?>background-image:url(<?= esc_url($image_url); ?>);<?php else: ?>background:<?php echo get_term_meta($item->term_id, 'color_picker', true); endif; ?>"></span>
                                 <span class="name"><?= $item->name; ?></span>
                             </a>
                         </li>

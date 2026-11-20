@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once get_template_directory() . '/inc/icons.php';
+require_once get_template_directory() . '/inc/webp.php';
 
 /**
  * Versión de un asset según su fecha de modificación (cache busting).
@@ -190,6 +191,30 @@ function webokids_preload_fonts() {
   }
 }
 add_action( 'wp_head', 'webokids_preload_fonts', 2 );
+
+/**
+ * Home: precarga el fondo del primer slide del banner (es el LCP). Empieza la descarga
+ * desde el <head>, antes de que el navegador llegue a la <img> del banner.
+ */
+function webokids_preload_home_banner() {
+  if ( ! is_page_template( 'templates/home-template.php' ) || ! function_exists( 'get_field' ) ) {
+    return;
+  }
+  $products = get_field( 'products' );
+  if ( empty( $products ) || ! is_array( $products ) ) {
+    return;
+  }
+  $first = reset( $products );
+  if ( empty( $first['background_image'] ) || empty( $first['background_img'] ) ) {
+    return;
+  }
+  $background_id = attachment_url_to_postid( $first['background_img'] );
+  $src           = $background_id ? wp_get_attachment_image_url( $background_id, 'full' ) : '';
+  if ( $src ) {
+    echo '<link rel="preload" as="image" href="' . esc_url( $src ) . '" fetchpriority="high">' . "\n";
+  }
+}
+add_action( 'wp_head', 'webokids_preload_home_banner', 1 );
 
 /*================= Render-blocking CSS =================*/
 

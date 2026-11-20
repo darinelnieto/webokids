@@ -2316,6 +2316,19 @@ html, body {
   opacity: 0;
   transition: 0.4s;
 }
+.banner-partial-0ed400 .banner-slide:not(.owl-loaded) {
+  display: block;
+  opacity: 1;
+  min-height: 78vh;
+}
+@media (max-width: 799px) {
+  .banner-partial-0ed400 .banner-slide:not(.owl-loaded) {
+    min-height: 100vh;
+  }
+}
+.banner-partial-0ed400 .banner-slide:not(.owl-loaded) > .item:not(:first-child) {
+  display: none;
+}
 .banner-partial-0ed400 .banner-slide .owl-item {
   height: 78vh;
 }
@@ -2324,18 +2337,18 @@ html, body {
     height: 100vh;
   }
 }
-.banner-partial-0ed400 .banner-slide .owl-item .item a {
+.banner-partial-0ed400 .banner-slide .item a {
   text-decoration: none;
   transition: 1s;
 }
-.banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain {
+.banner-partial-0ed400 .banner-slide .item a .product-image-contain {
   position: relative;
   height: 100%;
   width: 100%;
   min-height: 70vh;
   transition: 1s;
 }
-.banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain .background-text {
+.banner-partial-0ed400 .banner-slide .item a .product-image-contain .background-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -2344,7 +2357,7 @@ html, body {
   max-width: 600px;
   width: 100%;
 }
-.banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain img {
+.banner-partial-0ed400 .banner-slide .item a .product-image-contain img {
   transition: 1s;
   width: 100%;
   max-width: 420px;
@@ -2355,14 +2368,27 @@ html, body {
   transform: translate(-50%, 15%);
   z-index: 2;
 }
+.banner-partial-0ed400 .banner-slide .item a .product-image-contain img.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: left top;
+  transform: none;
+  z-index: 0;
+}
 @media (max-width: 799px) {
-  .banner-partial-0ed400 .banner-slide .owl-item .item {
+  .banner-partial-0ed400 .banner-slide .item {
     min-height: 100vh;
   }
-  .banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain {
+  .banner-partial-0ed400 .banner-slide .item a .product-image-contain {
     min-height: 100vh;
   }
-  .banner-partial-0ed400 .banner-slide .owl-item .item a .product-image-contain img {
+  .banner-partial-0ed400 .banner-slide .item a .product-image-contain img {
     transform: translate(-50%, -43%);
     top: 43%;
     max-width: 360px;
